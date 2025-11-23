@@ -16,23 +16,26 @@ export const WhyUs: React.FC = () => {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {WHY_US_CARDS.map((card, index) => (
-            <ScrollReveal key={index} delay={index * 150} className="h-full">
-              <div 
-                className="bg-white p-8 border border-blue-100 rounded-sm hover:shadow-lg transition-all duration-300 h-full flex flex-col justify-start text-left group"
-              >
-                <h3 className="text-xl font-medium text-blue-500 mb-6 group-hover:text-blue-600">
-                  {card.title}
-                </h3>
-                <p className="text-sm text-gray-700 leading-relaxed font-light">
-                  {card.description}
-                </p>
-                
-                {/* Optional decorative bottom line on hover */}
-                <div className="w-0 group-hover:w-full h-0.5 bg-blue-500 mt-auto pt-4 transition-all duration-500 ease-in-out"></div>
-              </div>
-            </ScrollReveal>
-          ))}
+          {WHY_US_CARDS.map((card, index) => {
+            const Icon = card.icon;
+            return (
+              <ScrollReveal key={index} delay={index * 150} className="h-full">
+                <div 
+                  className="bg-white p-8 border border-blue-100 rounded-sm hover:shadow-lg transition-all duration-300 h-full flex flex-col justify-start text-left group"
+                >
+                  <div className="mb-6 text-blue-500 group-hover:text-blue-600 transition-colors">
+                    <Icon size={40} strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-xl font-medium text-blue-500 mb-6 group-hover:text-blue-600">
+                    {card.title}
+                  </h3>
+                  <p className="text-sm text-gray-700 leading-relaxed font-light">
+                    {card.description}
+                  </p>
+                </div>
+              </ScrollReveal>
+            );
+          })}
         </div>
 
       </div>

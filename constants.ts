@@ -1,4 +1,4 @@
-import { FileText, ShieldAlert, BadgeDollarSign, Scale, Search, ShieldCheck, FileCheck, PenTool, Archive } from 'lucide-react';
+import { FileText, ShieldAlert, BadgeDollarSign, Scale, Search, ShieldCheck, FileCheck, PenTool, Archive, Handshake, Headphones, Cpu } from 'lucide-react';
 
 export const NAV_LINKS = [
   { name: 'Řešení', href: '#' },
@@ -157,14 +157,17 @@ export const MODULE_CONTENT: Record<string, any> = {
 
 export const WHY_US_CARDS = [
   {
+    icon: Handshake,
     title: 'Jsme spolehlivý partner',
     description: 'Už od roku 2013 vyvíjíme spolehlivé IT systémy, na které se spoléhají přední české firmy.'
   },
   {
+    icon: Headphones,
     title: 'Podpora 24/7',
     description: 'Naším zákazníkům poskytujeme nepřetržitou technickou podporu.'
   },
   {
+    icon: Cpu,
     title: 'Moderní technologie',
     description: 'Stavíme na špičkových technologiích Oracle, Red Hat a moderních cloudových platformách.'
   }
