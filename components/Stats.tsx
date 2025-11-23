@@ -24,7 +24,7 @@ export const Stats: React.FC = () => {
             return (
               <ScrollReveal key={index} delay={index * 150} className="h-full">
                 <div 
-                  className="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 text-left min-h-[200px] flex flex-col justify-center h-full"
+                  className="bg-white p-8 border border-blue-100 shadow-sm hover:shadow-md transition-all duration-300 text-left min-h-[200px] flex flex-col justify-center h-full"
                 >
                   <div className="text-4xl font-light text-[#4a90e2] mb-4">
                     <Counter end={numericValue} suffix={suffix} duration={1500} />
