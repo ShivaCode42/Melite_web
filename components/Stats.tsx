@@ -1,6 +1,7 @@
 import React from 'react';
 import { STATS } from '../constants';
 import { ScrollReveal } from './ScrollReveal';
+import { Counter } from './Counter';
 
 export const Stats: React.FC = () => {
   return (
@@ -15,20 +16,26 @@ export const Stats: React.FC = () => {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {STATS.map((stat, index) => (
-            <ScrollReveal key={index} delay={index * 150} className="h-full">
-              <div 
-                className="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 text-left min-h-[200px] flex flex-col justify-center h-full"
-              >
-                <div className="text-4xl font-light text-[#4a90e2] mb-4">
-                  {stat.value}
+          {STATS.map((stat, index) => {
+            // Extract number and suffix from string (e.g., "85%" -> 85 and "%")
+            const numericValue = parseInt(stat.value, 10);
+            const suffix = stat.value.replace(numericValue.toString(), '');
+
+            return (
+              <ScrollReveal key={index} delay={index * 150} className="h-full">
+                <div 
+                  className="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 text-left min-h-[200px] flex flex-col justify-center h-full"
+                >
+                  <div className="text-4xl font-light text-[#4a90e2] mb-4">
+                    <Counter end={numericValue} suffix={suffix} duration={1500} />
+                  </div>
+                  <p className="text-sm text-gray-800 font-medium leading-relaxed">
+                    {stat.text}
+                  </p>
                 </div>
-                <p className="text-sm text-gray-800 font-medium leading-relaxed">
-                  {stat.text}
-                </p>
-              </div>
-            </ScrollReveal>
-          ))}
+              </ScrollReveal>
+            );
+          })}
         </div>
       </div>
     </section>
