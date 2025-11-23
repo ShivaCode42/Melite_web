@@ -3,7 +3,7 @@ import { ScrollReveal } from './ScrollReveal';
 
 export const Hero: React.FC = () => {
   return (
-    <div className="relative bg-gradient-to-br from-[#1e6cd9] to-[#004e9a] pt-32 pb-24 px-4 sm:px-6 lg:px-8 text-center overflow-hidden">
+    <div className="relative bg-gradient-to-br from-[#1e6cd9] to-[#004e9a] pt-48 pb-40 px-4 sm:px-6 lg:px-8 text-center overflow-hidden">
       {/* Abstract circles to simulate the gradient texture in the original image */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
          <div className="absolute -top-20 -left-20 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
