@@ -12,7 +12,7 @@ export const Automation: React.FC = () => {
           <div className="w-full lg:w-1/2 relative min-h-auto lg:h-[400px]">
             <ScrollReveal delay={200} className="w-full h-full">
               {/* Responsive Container: Vertical stack on mobile, Absolute positions on Desktop */}
-              <div className="flex flex-col lg:block items-center gap-6 relative w-full h-full">
+              <div className="flex flex-col lg:block items-center gap-12 relative w-full h-full">
                 
                 {/* Connecting Lines (SVG) - Hidden on Mobile, Visible on Desktop */}
                 <svg className="hidden lg:block absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }}>

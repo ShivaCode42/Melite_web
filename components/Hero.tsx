@@ -12,7 +12,7 @@ export const Hero: React.FC = () => {
 
       <div className="relative max-w-4xl mx-auto z-0">
         <ScrollReveal direction="up" delay={0}>
-          <h1 className="text-3xl md:text-5xl font-medium text-white mb-6 leading-tight">
+          <h1 className="text-3xl md:text-5xl font-medium text-white mb-6 leading-relaxed">
             Komplexní platforma pro správu dokumentů
           </h1>
         </ScrollReveal>
@@ -24,13 +24,13 @@ export const Hero: React.FC = () => {
         </ScrollReveal>
 
         <ScrollReveal direction="up" delay={400}>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-0 max-w-lg mx-auto shadow-lg">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-0 max-w-lg mx-auto">
             <input
               type="email"
               placeholder="váš email"
-              className="w-full sm:w-64 px-4 py-3 text-gray-900 bg-white placeholder-gray-400 focus:outline-none rounded-t-sm sm:rounded-l-sm sm:rounded-t-none text-sm"
+              className="w-full sm:w-64 px-4 py-4 text-gray-900 bg-white placeholder-gray-400 focus:outline-none rounded-t-sm sm:rounded-l-sm sm:rounded-t-none text-sm"
             />
-            <button className="w-full sm:w-auto px-6 py-3 bg-[#0d1e35] text-white text-sm font-medium hover:bg-gray-900 transition-colors rounded-b-sm sm:rounded-r-sm sm:rounded-b-none whitespace-nowrap">
+            <button className="w-full sm:w-auto px-6 py-4 bg-[#0d1e35] text-white text-sm font-medium hover:bg-gray-900 transition-colors rounded-b-sm sm:rounded-r-sm sm:rounded-b-none whitespace-nowrap">
               Stáhnout brožuru
             </button>
           </div>

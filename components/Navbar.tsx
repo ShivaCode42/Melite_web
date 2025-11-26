@@ -50,7 +50,7 @@ export const Navbar: React.FC = () => {
             <a
               href="#kontakt"
               onClick={(e) => handleScroll(e, '#kontakt')}
-              className="bg-[#2d76d8] hover:bg-blue-600 text-white px-5 py-2 rounded-sm text-sm font-medium transition-colors"
+              className="bg-[#1a5bb5] hover:bg-blue-600 text-white px-5 py-2 rounded-sm text-sm font-medium transition-colors"
             >
               Kontaktujte nás
             </a>
@@ -86,7 +86,7 @@ export const Navbar: React.FC = () => {
             <a
               href="#kontakt"
               onClick={(e) => handleScroll(e, '#kontakt')}
-              className="block w-full text-left text-white bg-[#2d76d8] hover:bg-blue-600 px-3 py-2 rounded-md text-base font-medium mt-4 transition-colors"
+              className="block w-full text-left text-white bg-[#1a5bb5] hover:bg-blue-600 px-3 py-2 rounded-md text-base font-medium mt-4 transition-colors"
             >
               Kontaktujte nás
             </a>
