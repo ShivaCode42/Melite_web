@@ -1,70 +1,85 @@
 import React from 'react';
-import { FileCheck, FileText, PenTool } from 'lucide-react';
+import { FileCheck, FileText, PenTool, ArrowDown } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 
 export const Automation: React.FC = () => {
   return (
-    <section className="bg-[#0070f3] text-white py-20 overflow-hidden relative">
+    <section className="bg-[#0070f3] text-white py-12 md:py-20 overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           
           {/* Left Side: Visual Flowchart */}
-          <div className="w-full lg:w-1/2 relative h-[400px]">
+          <div className="w-full lg:w-1/2 relative min-h-auto lg:h-[400px]">
             <ScrollReveal delay={200} className="w-full h-full">
-              {/* Connecting Lines (SVG) */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }}>
-                {/* Line from Top to Split */}
-                <path d="M250 100 L250 160" stroke="white" strokeWidth="2" fill="none" strokeDasharray="4 2" className="opacity-50" />
-                {/* Horizontal Split Line */}
-                <path d="M140 160 L360 160" stroke="white" strokeWidth="2" fill="none" strokeDasharray="4 2" className="opacity-50" />
-                {/* Line to Left Node */}
-                <path d="M140 160 L140 200" stroke="white" strokeWidth="2" fill="none" strokeDasharray="4 2" className="opacity-50" />
-                {/* Line to Right Node */}
-                <path d="M360 160 L360 200" stroke="white" strokeWidth="2" fill="none" strokeDasharray="4 2" className="opacity-50" />
-              </svg>
+              {/* Responsive Container: Vertical stack on mobile, Absolute positions on Desktop */}
+              <div className="flex flex-col lg:block items-center gap-6 relative w-full h-full">
+                
+                {/* Connecting Lines (SVG) - Hidden on Mobile, Visible on Desktop */}
+                <svg className="hidden lg:block absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }}>
+                  {/* Line from Top to Split */}
+                  <path d="M250 100 L250 160" stroke="white" strokeWidth="2" fill="none" strokeDasharray="4 2" className="opacity-50" />
+                  {/* Horizontal Split Line */}
+                  <path d="M140 160 L360 160" stroke="white" strokeWidth="2" fill="none" strokeDasharray="4 2" className="opacity-50" />
+                  {/* Line to Left Node */}
+                  <path d="M140 160 L140 200" stroke="white" strokeWidth="2" fill="none" strokeDasharray="4 2" className="opacity-50" />
+                  {/* Line to Right Node */}
+                  <path d="M360 160 L360 200" stroke="white" strokeWidth="2" fill="none" strokeDasharray="4 2" className="opacity-50" />
+                </svg>
 
-              {/* Top Node */}
-              <div className="absolute top-[30px] left-1/2 transform -translate-x-1/2 flex flex-col items-center z-10">
-                <div className="bg-white text-blue-600 p-4 rounded-lg shadow-lg w-48 text-center relative">
-                   <div className="flex justify-center mb-2">
-                      <FileCheck size={24} className="text-blue-500" />
-                   </div>
-                   <span className="text-gray-800 font-medium text-sm block leading-tight">Schválení<br/>dokumentu</span>
-                   
-                   {/* Avatar Badge */}
-                   <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=11" alt="User" className="w-full h-full object-cover" />
-                   </div>
-                </div>
-              </div>
-
-              {/* Bottom Left Node */}
-              <div className="absolute top-[200px] left-[15%] sm:left-[20%] transform -translate-x-1/2 flex flex-col items-center z-10">
-                <div className="bg-white text-blue-600 p-4 rounded-lg shadow-lg w-48 text-center relative">
-                   <div className="flex justify-center mb-2">
-                      <FileText size={24} className="text-blue-500" />
-                   </div>
-                   <span className="text-gray-800 font-medium text-sm block leading-tight">Zaevidování<br/>dokumentu</span>
-                   
+                {/* Top Node */}
+                <div className="relative lg:absolute lg:top-[30px] lg:left-1/2 lg:transform lg:-translate-x-1/2 z-10 w-full max-w-[200px]">
+                  <div className="bg-white text-blue-600 p-4 rounded-lg shadow-lg w-full text-center relative">
+                    <div className="flex justify-center mb-2">
+                        <FileCheck size={24} className="text-blue-500" />
+                    </div>
+                    <span className="text-gray-800 font-medium text-sm block leading-tight">Schválení<br/>dokumentu</span>
+                    
                     {/* Avatar Badge */}
-                   <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=5" alt="User" className="w-full h-full object-cover" />
-                   </div>
+                    <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-gray-200">
+                        <img src="https://i.pravatar.cc/100?img=11" alt="User" className="w-full h-full object-cover" />
+                    </div>
+                  </div>
                 </div>
-              </div>
+                
+                {/* Mobile-only Arrow */}
+                <div className="lg:hidden text-white/50">
+                  <ArrowDown size={24} />
+                </div>
 
-              {/* Bottom Right Node */}
-              <div className="absolute top-[200px] left-[85%] sm:left-[80%] lg:left-[80%] transform -translate-x-1/2 flex flex-col items-center z-10">
-                <div className="bg-white text-blue-600 p-4 rounded-lg shadow-lg w-48 text-center relative">
-                   <div className="flex justify-center mb-2">
-                      <PenTool size={24} className="text-blue-500" />
-                   </div>
-                   <span className="text-gray-800 font-medium text-sm block leading-tight">Podepsání<br/>protistranou</span>
-                   
-                    {/* Avatar Badge */}
-                   <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=33" alt="User" className="w-full h-full object-cover" />
-                   </div>
+                {/* Desktop: Container for bottom nodes to manage absolute positioning context relative to 80% width if needed, but we use strict offsets */}
+                {/* Bottom Left Node */}
+                <div className="relative lg:absolute lg:top-[200px] lg:left-[20%] lg:transform lg:-translate-x-1/2 z-10 w-full max-w-[200px]">
+                  <div className="bg-white text-blue-600 p-4 rounded-lg shadow-lg w-full text-center relative">
+                    <div className="flex justify-center mb-2">
+                        <FileText size={24} className="text-blue-500" />
+                    </div>
+                    <span className="text-gray-800 font-medium text-sm block leading-tight">Zaevidování<br/>dokumentu</span>
+                    
+                      {/* Avatar Badge */}
+                    <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-gray-200">
+                        <img src="https://i.pravatar.cc/100?img=5" alt="User" className="w-full h-full object-cover" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mobile-only Arrow */}
+                <div className="lg:hidden text-white/50">
+                  <ArrowDown size={24} />
+                </div>
+
+                {/* Bottom Right Node */}
+                <div className="relative lg:absolute lg:top-[200px] lg:left-[80%] lg:transform lg:-translate-x-1/2 z-10 w-full max-w-[200px]">
+                  <div className="bg-white text-blue-600 p-4 rounded-lg shadow-lg w-full text-center relative">
+                    <div className="flex justify-center mb-2">
+                        <PenTool size={24} className="text-blue-500" />
+                    </div>
+                    <span className="text-gray-800 font-medium text-sm block leading-tight">Podepsání<br/>protistranou</span>
+                    
+                      {/* Avatar Badge */}
+                    <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-gray-200">
+                        <img src="https://i.pravatar.cc/100?img=33" alt="User" className="w-full h-full object-cover" />
+                    </div>
+                  </div>
                 </div>
               </div>
               
@@ -74,7 +89,7 @@ export const Automation: React.FC = () => {
           </div>
 
           {/* Right Side: Content */}
-          <div className="w-full lg:w-1/2 text-left">
+          <div className="w-full lg:w-1/2 text-left mt-8 lg:mt-0">
             <ScrollReveal direction="left" delay={0}>
               <h2 className="text-3xl md:text-4xl font-medium mb-6 leading-tight">
                 Automatizace workflow<br />

@@ -11,7 +11,7 @@ export const Solution: React.FC = () => {
   };
 
   return (
-    <section id="reseni" className="py-10 bg-white">
+    <section id="reseni" className="py-12 md:py-20 bg-white">
       <div className="max-w-4xl mx-auto px-4 text-center mb-12">
         <ScrollReveal>
           <h2 className="text-2xl md:text-3xl font-medium text-blue-400 mb-6">
@@ -49,7 +49,7 @@ export const Solution: React.FC = () => {
             </div>
 
             {/* Steps Side */}
-            <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center bg-[#1f6dc6] text-white">
+            <div className="lg:w-1/2 p-6 lg:p-12 flex flex-col justify-center bg-[#1f6dc6] text-white">
               <div className="space-y-0">
                 {WORKFLOW_STEPS.map((step, index) => (
                   <div key={index} className="border-b border-blue-400/30 last:border-0">
@@ -82,7 +82,7 @@ export const Solution: React.FC = () => {
                             openStepIndex === index ? 'max-h-48 opacity-100 mb-4' : 'max-h-0 opacity-0'
                         }`}
                     >
-                        <div className="pl-14 pr-4 text-blue-100 text-sm font-light leading-relaxed">
+                        <div className="pl-4 md:pl-14 pr-4 text-blue-100 text-sm font-light leading-relaxed">
                             {step.description}
                         </div>
                     </div>

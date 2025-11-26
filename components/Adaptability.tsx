@@ -7,7 +7,7 @@ export const Adaptability: React.FC = () => {
   const content = MODULE_CONTENT[activeTab];
 
   return (
-    <section id="produkty" className="py-20 bg-white">
+    <section id="produkty" className="py-12 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -168,26 +168,28 @@ export const Adaptability: React.FC = () => {
 
                 {/* Right: Code Visualization */}
                 <div className="lg:w-1/2 bg-[#1e1e1e] p-6 overflow-hidden flex items-center min-h-[300px]">
-                  <div className="w-full font-mono text-xs md:text-sm">
-                    <div className="text-gray-500 mb-2">/* Process data from the central system. */</div>
-                    <div className="text-purple-400 mb-1">
-                      <span className="text-gray-400">* @param</span> <span className="text-yellow-300">{`{Object}`}</span> <span className="text-blue-300">req</span> - The request object.
+                  <div className="w-full font-mono text-xs md:text-sm overflow-x-auto">
+                    <div className="min-w-[400px]"> {/* Min width ensures code structure doesn't break on tiny screens */}
+                      <div className="text-gray-500 mb-2">/* Process data from the central system. */</div>
+                      <div className="text-purple-400 mb-1">
+                        <span className="text-gray-400">* @param</span> <span className="text-yellow-300">{`{Object}`}</span> <span className="text-blue-300">req</span> - The request object.
+                      </div>
+                      <div className="text-purple-400 mb-4">
+                        <span className="text-gray-400">* @return</span> <span className="text-yellow-300">{`{Object}`}</span> - The response object.
+                      </div>
+                      
+                      <div className="text-blue-400">export const <span className="text-yellow-300">processCentralData</span> = <span className="text-white">(req)</span> <span className="text-white">{`=> {`}</span></div>
+                      <div className="pl-4 text-purple-400">const <span className="text-white">{`{`}</span></div>
+                      <div className="pl-8 text-white">body: <span className="text-white">{`{`}</span></div>
+                      <div className="pl-12 text-blue-300">centralData,</div>
+                      <div className="pl-12 text-blue-300">source,</div>
+                      <div className="pl-8 text-white">{`}`}</div>
+                      <div className="pl-4 text-white">{`} = req;`}</div>
+                      
+                      <div className="pl-4 mt-2 text-gray-400">console.log('<span className="text-green-400">Processing data from central system</span>', centralData);</div>
+                      <div className="pl-4 text-gray-500">// Logic to handle central system data...</div>
+                      <div className="text-white">{`}`}</div>
                     </div>
-                    <div className="text-purple-400 mb-4">
-                      <span className="text-gray-400">* @return</span> <span className="text-yellow-300">{`{Object}`}</span> - The response object.
-                    </div>
-                    
-                    <div className="text-blue-400">export const <span className="text-yellow-300">processCentralData</span> = <span className="text-white">(req)</span> <span className="text-white">{`=> {`}</span></div>
-                    <div className="pl-4 text-purple-400">const <span className="text-white">{`{`}</span></div>
-                    <div className="pl-8 text-white">body: <span className="text-white">{`{`}</span></div>
-                    <div className="pl-12 text-blue-300">centralData,</div>
-                    <div className="pl-12 text-blue-300">source,</div>
-                    <div className="pl-8 text-white">{`}`}</div>
-                    <div className="pl-4 text-white">{`} = req;`}</div>
-                    
-                    <div className="pl-4 mt-2 text-gray-400">console.log('<span className="text-green-400">Processing data from central system</span>', centralData);</div>
-                    <div className="pl-4 text-gray-500">// Logic to handle central system data...</div>
-                    <div className="text-white">{`}`}</div>
                   </div>
                 </div>
               </div>

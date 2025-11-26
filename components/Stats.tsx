@@ -5,7 +5,7 @@ import { Counter } from './Counter';
 
 export const Stats: React.FC = () => {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-12 md:py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-12">
