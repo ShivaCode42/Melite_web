@@ -1,10 +1,10 @@
 import { FileText, ShieldAlert, BadgeDollarSign, Scale, Search, ShieldCheck, FileCheck, PenTool, Archive, Handshake, Headphones, Cpu } from 'lucide-react';
 
 export const NAV_LINKS = [
-  { name: 'Řešení', href: '#' },
-  { name: 'Produkty', href: '#' },
-  { name: 'O nás', href: '#' },
-  { name: 'Kontakt', href: '#' },
+  { name: 'Řešení', href: '#reseni' },
+  { name: 'Produkty', href: '#produkty' },
+  { name: 'O nás', href: '#o-nas' },
+  { name: 'Kontakt', href: '#kontakt' },
 ];
 
 export const PROBLEMS = [
@@ -79,7 +79,7 @@ export const ADAPTABILITY_TABS = [
   'Migrace'
 ];
 
-export const MODULE_CONTENT: Record<string, any> = {
+export const MODULE_CONTENT = {
   'Platforma': {
     layout: 'code',
     title: 'Core',

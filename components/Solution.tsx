@@ -11,7 +11,7 @@ export const Solution: React.FC = () => {
   };
 
   return (
-    <section className="py-10 bg-white">
+    <section id="reseni" className="py-10 bg-white">
       <div className="max-w-4xl mx-auto px-4 text-center mb-12">
         <ScrollReveal>
           <h2 className="text-2xl md:text-3xl font-medium text-blue-400 mb-6">

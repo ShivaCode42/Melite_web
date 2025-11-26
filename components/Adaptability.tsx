@@ -7,7 +7,7 @@ export const Adaptability: React.FC = () => {
   const content = MODULE_CONTENT[activeTab];
 
   return (
-    <section className="py-20 bg-white">
+    <section id="produkty" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -171,13 +171,13 @@ export const Adaptability: React.FC = () => {
                   <div className="w-full font-mono text-xs md:text-sm">
                     <div className="text-gray-500 mb-2">/* Process data from the central system. */</div>
                     <div className="text-purple-400 mb-1">
-                      <span className="text-gray-400">* @param</span> <span className="text-yellow-300">{`{CentralReq<ProcessDataBody>}`}</span> <span className="text-blue-300">req</span> - The request object.
+                      <span className="text-gray-400">* @param</span> <span className="text-yellow-300">{`{Object}`}</span> <span className="text-blue-300">req</span> - The request object.
                     </div>
                     <div className="text-purple-400 mb-4">
-                      <span className="text-gray-400">* @return</span> <span className="text-yellow-300">{`{Res}`}</span> - The response object.
+                      <span className="text-gray-400">* @return</span> <span className="text-yellow-300">{`{Object}`}</span> - The response object.
                     </div>
                     
-                    <div className="text-blue-400">export const <span className="text-yellow-300">processCentralData</span> = <span className="text-white">(req: ICentralReqProcess)</span> <span className="text-white">{`=> {`}</span></div>
+                    <div className="text-blue-400">export const <span className="text-yellow-300">processCentralData</span> = <span className="text-white">(req)</span> <span className="text-white">{`=> {`}</span></div>
                     <div className="pl-4 text-purple-400">const <span className="text-white">{`{`}</span></div>
                     <div className="pl-8 text-white">body: <span className="text-white">{`{`}</span></div>
                     <div className="pl-12 text-blue-300">centralData,</div>

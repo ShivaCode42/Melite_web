@@ -4,7 +4,7 @@ import { ScrollReveal } from './ScrollReveal';
 
 export const ContactCTA: React.FC = () => {
   return (
-    <section className="py-20 bg-white">
+    <section id="kontakt" className="py-20 bg-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Section */}
