@@ -9,7 +9,7 @@ export const WhyUs: React.FC = () => {
         
         <ScrollReveal>
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-medium text-blue-400">
+            <h2 className="text-2xl md:text-3xl font-medium text-blue-500">
               Proč s námi spolupracovat?
             </h2>
           </div>
@@ -23,10 +23,10 @@ export const WhyUs: React.FC = () => {
                 <div 
                   className="bg-white p-8 border border-blue-100 rounded-sm hover:shadow-lg transition-all duration-300 h-full flex flex-col justify-start text-left group"
                 >
-                  <div className="mb-6 text-blue-500 group-hover:text-blue-600 transition-colors">
-                    <Icon size={40} strokeWidth={1.5} />
+                  <div className="mb-8 w-14 h-14 flex items-center justify-center bg-brand-light rounded-xl text-brand-blue group-hover:bg-blue-100 transition-all duration-300 group-hover:scale-105">
+                    <Icon size={28} strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-xl font-medium text-blue-500 mb-6 group-hover:text-blue-600">
+                  <h3 className="text-xl font-medium text-blue-500 mb-6 group-hover:text-blue-600 transition-colors">
                     {card.title}
                   </h3>
                   <p className="text-sm text-gray-700 leading-relaxed font-light">

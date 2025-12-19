@@ -1,7 +1,5 @@
 import { FileText, ShieldAlert, BadgeDollarSign, Scale, Search, ShieldCheck, FileCheck, PenTool, Archive, Handshake, Headphones, Cpu } from 'lucide-react';
 
-export const STORAGE_KEY = 'siese_captured_leads';
-
 export const NAV_LINKS = [
   { name: 'Řešení', href: '#reseni' },
   { name: 'Produkty', href: '#produkty' },
@@ -85,7 +83,7 @@ export const MODULE_CONTENT = {
   'Platforma': {
     layout: 'code',
     title: 'Core',
-    description: 'Slouží jako základní platforma pro správu uživatelů, bezpečnosti a integrací. Zajišťuje, aby všechny ostatní moduly komunikovaly hladce a bezpečně.',
+    description: 'Slouží jako základní platforma pro správu uživatelů, bezpečnosti a integrací. Zajiždťuje, aby všechny ostatní moduly komunikovaly hladce a bezpečně.',
     features: [
       { label: 'Integrovatelnost:', text: 'REST API pro snadné napojení na vaše ERP, CRM, spisovou službu či jiné aplikace.' },
       { label: 'Bezpečnost:', text: 'Pokročilá autentizace (SSO, AD/LDAP) a řízení oprávnění.' },
@@ -196,11 +194,10 @@ export const FAQ_ITEMS = [
 
 export const CONTACT_DETAILS = {
   addressLines: [
-    'Hlavní office',
     'Melite s.r.o.',
     'Pražákova 1008/69',
     '639 00 Brno – Štýřice'
   ],
-  email: 'info@melite.eu',
+  email: 'info@melite.cz',
   phone: '+420 530 515 200'
 };

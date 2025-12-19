@@ -1,6 +1,6 @@
+
 import React, { useState } from 'react';
 import { ScrollReveal } from './ScrollReveal';
-import { STORAGE_KEY } from '../constants';
 
 const FORBIDDEN_DOMAINS = [
   'gmail.com',
@@ -42,21 +42,10 @@ export const Hero: React.FC = () => {
 
     setIsDownloading(true);
 
-    // Save to "Database"
-    try {
-      const existingLeads = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-      const newLead = {
-        email: email,
-        timestamp: new Date().toISOString(),
-        domain: domain
-      };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify([...existingLeads, newLead]));
-    } catch (err) {
-      console.error('Error saving lead:', err);
-    }
-
     // Simulate a short delay for UX
     setTimeout(() => {
+      // In a real app, this would be a link to a static PDF file
+      // For this demo, we create a simple blob representing the brochure
       const brochureContent = `
         SIESE - Chytrá evidence a správa dokumentů
         
@@ -145,8 +134,13 @@ export const Hero: React.FC = () => {
               ) : 'Stáhnout brožuru'}
             </button>
           </form>
+          
+          <p className="mt-4 text-[10px] md:text-xs text-blue-100/60 font-light">
+            Odesláním formuláře souhlasíte se zpracováním osobních údajů.
+          </p>
+
           {showError && (
-            <p className="mt-4 text-xs text-red-300 font-medium animate-pulse">
+            <p className="mt-2 text-xs text-red-300 font-medium animate-pulse">
               Zadejte prosím svůj firemní e-mail pro stažení brožury.
             </p>
           )}
