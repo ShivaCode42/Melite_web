@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -11,7 +10,6 @@ import { WhyUs } from './components/WhyUs';
 import { PartnerSection } from './components/PartnerSection';
 import { FAQ } from './components/FAQ';
 import { ContactCTA } from './components/ContactCTA';
-import { ScrollReveal } from './components/ScrollReveal';
 
 const App: React.FC = () => {
   return (
@@ -32,15 +30,6 @@ const App: React.FC = () => {
       
       <FAQ />
       <ContactCTA />
-      
-      {/* Simple Footer Placeholder */}
-      <footer className="bg-gray-50 py-12 border-t border-gray-100">
-        <ScrollReveal>
-          <div className="max-w-7xl mx-auto px-4 text-center text-gray-400 text-xs">
-            &copy; {new Date().getFullYear()} MELITE. Všechna práva vyloučena.
-          </div>
-        </ScrollReveal>
-      </footer>
     </div>
   );
 };

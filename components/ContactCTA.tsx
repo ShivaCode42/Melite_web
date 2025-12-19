@@ -5,7 +5,7 @@ import { Phone } from 'lucide-react';
 
 export const ContactCTA: React.FC = () => {
   return (
-    <section id="kontakt" className="py-20 md:py-32 bg-[#1e6cd9] relative overflow-hidden">
+    <section id="kontakt" className="pt-20 pb-10 md:pt-32 md:pb-12 bg-[#1e6cd9] relative overflow-hidden">
       {/* Background decoration - simplified to match clean visual */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-10">
          <div className="absolute inset-0 bg-dot-grid-white opacity-40"></div>
@@ -28,7 +28,7 @@ export const ContactCTA: React.FC = () => {
         </ScrollReveal>
 
         {/* Contact Boxes Container */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20">
           
           {/* Address Box */}
           <ScrollReveal delay={200}>
@@ -76,9 +76,14 @@ export const ContactCTA: React.FC = () => {
               </div>
             </div>
           </ScrollReveal>
-
         </div>
 
+        {/* Integrated Footer/Copyright */}
+        <ScrollReveal delay={500}>
+          <div className="pt-8 border-t border-white/10 text-center text-white/40 text-[10px] md:text-xs tracking-tight">
+            &copy; {new Date().getFullYear()} MELITE. Všechna práva vyloučena.
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
