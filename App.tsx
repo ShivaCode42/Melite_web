@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -28,8 +29,8 @@ const App: React.FC = () => {
       <FAQ />
       <ContactCTA />
       
-      {/* Simple Footer Placeholder */}
-      <footer className="bg-gray-50 py-8 border-t border-gray-100 mt-12">
+      {/* Simple Footer Placeholder - Removed mt-12 to eliminate white belt */}
+      <footer className="bg-gray-50 py-12 border-t border-gray-100">
         <ScrollReveal>
           <div className="max-w-7xl mx-auto px-4 text-center text-gray-400 text-xs">
             &copy; {new Date().getFullYear()} MELITE. Všechna práva vyhrazena.

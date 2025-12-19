@@ -4,16 +4,23 @@ import { ScrollReveal } from './ScrollReveal';
 
 export const ContactCTA: React.FC = () => {
   return (
-    <section id="kontakt" className="py-12 md:py-20 bg-white">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="kontakt" className="py-12 md:py-24 bg-[#1e6cd9] relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
+         <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
+         <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-800 rounded-full blur-3xl"></div>
+         <div className="absolute inset-0 bg-dot-grid-white opacity-40"></div>
+      </div>
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header Section */}
         <ScrollReveal>
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-medium text-blue-400 mb-6">
+            <h2 className="text-2xl md:text-4xl font-medium text-white mb-6 leading-tight">
               Začněte spravovat vaše dokumenty lépe už dnes!
             </h2>
-            <p className="text-gray-700 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+            <p className="text-blue-100 text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-light">
               Zaujalo vás naše řešení a rádi byste se dozvěděli víc?
               <br className="hidden md:block" />
               Sjednejte si nezávaznou prezentaci šitou na míru vám s jedním z našich specialistů.
@@ -26,11 +33,11 @@ export const ContactCTA: React.FC = () => {
           
           {/* Address Box */}
           <ScrollReveal delay={200} className="flex-1">
-            <div className="border border-blue-200 p-8 rounded-sm h-full">
-              <h3 className="text-gray-800 font-medium mb-4 text-lg">Address</h3>
-              <div className="text-gray-600 space-y-1 text-sm leading-relaxed">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-8 rounded-lg h-full transition-all hover:bg-white/15">
+              <h3 className="text-white font-medium mb-4 text-lg">Adresa</h3>
+              <div className="text-blue-50 space-y-1 text-sm leading-relaxed">
                 {CONTACT_DETAILS.addressLines.map((line, index) => (
-                  <p key={index} className={index === 0 ? "font-medium text-gray-800 mb-1" : ""}>
+                  <p key={index} className={index === 0 ? "font-semibold text-white mb-2" : "font-light"}>
                     {line}
                   </p>
                 ))}
@@ -40,22 +47,22 @@ export const ContactCTA: React.FC = () => {
 
           {/* Contact Actions Box */}
           <ScrollReveal delay={400} className="flex-1">
-            <div className="border border-blue-200 p-8 rounded-sm flex flex-col justify-center h-full">
-              <h3 className="text-blue-400 font-medium mb-6 text-lg text-center md:text-left">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-8 rounded-lg flex flex-col justify-center h-full transition-all hover:bg-white/15">
+              <h3 className="text-white font-medium mb-6 text-lg text-center md:text-left">
                 Kontaktujte nás
               </h3>
               
               <div className="space-y-4">
                 <a 
                   href={`mailto:${CONTACT_DETAILS.email}`}
-                  className="block w-full bg-[#1e6cd9] hover:bg-blue-700 text-white text-center py-3 rounded-sm text-sm font-medium transition-colors"
+                  className="block w-full bg-white text-[#1e6cd9] hover:bg-blue-50 text-center py-4 rounded-md text-sm font-bold transition-all shadow-lg active:scale-95"
                 >
                   Napsat zprávu
                 </a>
                 
                 <a 
                   href={`tel:${CONTACT_DETAILS.phone.replace(/\s/g, '')}`}
-                  className="block w-full bg-[#aecbf0] hover:bg-blue-300 text-white text-center py-3 rounded-sm text-sm font-medium transition-colors"
+                  className="block w-full bg-transparent border border-white/40 hover:border-white text-white text-center py-4 rounded-md text-sm font-medium transition-all hover:bg-white/10"
                   title={CONTACT_DETAILS.phone}
                 >
                   Zavolat

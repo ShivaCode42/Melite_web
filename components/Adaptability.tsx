@@ -7,7 +7,7 @@ export const Adaptability: React.FC = () => {
   const content = MODULE_CONTENT[activeTab];
 
   return (
-    <section id="produkty" className="py-12 md:py-20 bg-white">
+    <section id="produkty" className="py-12 md:py-20 bg-dot-grid">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -51,7 +51,7 @@ export const Adaptability: React.FC = () => {
              <ScrollReveal delay={300}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {content.items.map((item: any, index: number) => (
-                  <div key={index} className="bg-blue-50/50 p-8 rounded-xl border border-blue-100 hover:shadow-md transition-shadow">
+                  <div key={index} className="bg-white p-8 rounded-xl border border-blue-100 hover:shadow-md transition-shadow">
                     <h3 className="text-2xl font-bold text-[#3b82f6] mb-4">{item.title}</h3>
                     <p className="text-gray-600 mb-6 text-sm leading-relaxed min-h-[40px]">
                       {item.description}
@@ -71,7 +71,7 @@ export const Adaptability: React.FC = () => {
 
           {content.layout === 'visual' && (
             <ScrollReveal delay={300}>
-              <div className="bg-blue-50/50 rounded-xl overflow-hidden border border-blue-100 flex flex-col lg:flex-row shadow-sm min-h-[400px]">
+              <div className="bg-white rounded-xl overflow-hidden border border-blue-100 flex flex-col lg:flex-row shadow-sm min-h-[400px]">
                 {/* Left: Text Content */}
                 <div className="p-8 lg:p-12 lg:w-1/2 flex flex-col justify-center">
                   <h3 className="text-3xl font-bold text-[#3b82f6] mb-4">{content.title}</h3>
@@ -88,7 +88,7 @@ export const Adaptability: React.FC = () => {
                 </div>
 
                 {/* Right: Visual */}
-                <div className="lg:w-1/2 bg-white p-8 flex items-center justify-center border-l border-blue-100 relative overflow-hidden">
+                <div className="lg:w-1/2 bg-gray-50/30 p-8 flex items-center justify-center border-l border-blue-100 relative overflow-hidden">
                    {/* Background decoration */}
                    <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
@@ -150,7 +150,7 @@ export const Adaptability: React.FC = () => {
 
           {content.layout === 'code' && (
             <ScrollReveal delay={300}>
-              <div className="bg-blue-50/50 rounded-xl overflow-hidden border border-blue-100 flex flex-col lg:flex-row shadow-sm">
+              <div className="bg-white rounded-xl overflow-hidden border border-blue-100 flex flex-col lg:flex-row shadow-sm">
                 {/* Left: Text Content */}
                 <div className="p-8 lg:p-12 lg:w-1/2">
                   <h3 className="text-3xl font-bold text-[#3b82f6] mb-4">{content.title}</h3>
