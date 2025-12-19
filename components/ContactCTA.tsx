@@ -1,6 +1,7 @@
 import React from 'react';
 import { CONTACT_DETAILS } from '../constants';
 import { ScrollReveal } from './ScrollReveal';
+import { Phone } from 'lucide-react';
 
 export const ContactCTA: React.FC = () => {
   return (
@@ -41,6 +42,12 @@ export const ContactCTA: React.FC = () => {
                     {line}
                   </p>
                 ))}
+                <div className="pt-4 flex items-center gap-2 text-white">
+                  <Phone size={16} className="text-blue-300" />
+                  <a href={`tel:${CONTACT_DETAILS.phone.replace(/\s/g, '')}`} className="font-semibold hover:text-blue-100 transition-colors">
+                    {CONTACT_DETAILS.phone}
+                  </a>
+                </div>
               </div>
             </div>
           </ScrollReveal>
@@ -60,13 +67,9 @@ export const ContactCTA: React.FC = () => {
                   Napsat zprávu
                 </a>
                 
-                <a 
-                  href={`tel:${CONTACT_DETAILS.phone.replace(/\s/g, '')}`}
-                  className="block w-full bg-transparent border border-white/40 hover:border-white text-white text-center py-4 rounded-md text-sm font-medium transition-all hover:bg-white/10"
-                  title={CONTACT_DETAILS.phone}
-                >
-                  Zavolat
-                </a>
+                <p className="text-blue-100 text-xs text-center font-light opacity-60">
+                  Na zprávy odpovídáme zpravidla do 24 hodin.
+                </p>
               </div>
             </div>
           </ScrollReveal>

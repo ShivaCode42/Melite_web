@@ -1,5 +1,7 @@
 import { FileText, ShieldAlert, BadgeDollarSign, Scale, Search, ShieldCheck, FileCheck, PenTool, Archive, Handshake, Headphones, Cpu } from 'lucide-react';
 
+export const STORAGE_KEY = 'siese_captured_leads';
+
 export const NAV_LINKS = [
   { name: 'Řešení', href: '#reseni' },
   { name: 'Produkty', href: '#produkty' },
@@ -199,6 +201,6 @@ export const CONTACT_DETAILS = {
     'Pražákova 1008/69',
     '639 00 Brno – Štýřice'
   ],
-  email: 'info@melite.cz',
-  phone: '+420 541 234 567'
+  email: 'info@melite.eu',
+  phone: '+420 530 515 200'
 };
