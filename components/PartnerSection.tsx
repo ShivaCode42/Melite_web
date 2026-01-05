@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ScrollReveal } from './ScrollReveal';
 
@@ -38,21 +37,7 @@ export const PartnerSection: React.FC = () => {
                   href="https://www.nesax.cz/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="
-                    inline-block 
-                    bg-[#0052cc] 
-                    text-white 
-                    px-14 py-4 
-                    rounded-md 
-                    text-lg font-bold 
-                    transition-all duration-300 ease-out
-                    shadow-md 
-                    hover:bg-[#0060e6] 
-                    hover:shadow-[0_10px_40px_-10px_rgba(0,82,204,0.7)] 
-                    hover:brightness-110 
-                    relative 
-                    overflow-hidden
-                  "
+                  className="inline-block bg-[#0052cc] text-white px-14 py-4 rounded-md text-lg font-bold transition-all duration-300 ease-out shadow-md hover:bg-[#0060e6] hover:shadow-[0_10px_40px_-10px_rgba(0,82,204,0.7)] hover:brightness-110 relative overflow-hidden"
                 >
                   <span className="relative z-10">Více o partnerovi</span>
                 </a>
