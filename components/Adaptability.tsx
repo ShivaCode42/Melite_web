@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { ADAPTABILITY_TABS, MODULE_CONTENT } from '../constants';
 import { ScrollReveal } from './ScrollReveal';
@@ -17,7 +16,7 @@ export const Adaptability: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {content.items.map((item: any, index: number) => (
               <div key={index} className="bg-white p-8 rounded-xl border border-blue-100 hover:shadow-md transition-shadow">
-                <h3 className="text-2xl font-bold text-[#3b82f6] mb-4">{item.title}</h3>
+                <h3 className="text-2xl font-bold text-[#1e6cd9] mb-4">{item.title}</h3>
                 <p className="text-gray-600 mb-6 text-sm leading-relaxed min-h-[40px]">
                   {item.description}
                 </p>
@@ -36,7 +35,7 @@ export const Adaptability: React.FC = () => {
         {content.layout === 'visual' && (
           <div className="bg-white rounded-xl overflow-hidden border border-blue-100 flex flex-col lg:flex-row shadow-sm min-h-[400px]">
             <div className="p-8 lg:p-12 lg:w-1/2 flex flex-col justify-center">
-              <h3 className="text-3xl font-bold text-[#3b82f6] mb-4">{content.title}</h3>
+              <h3 className="text-3xl font-bold text-[#1e6cd9] mb-4">{content.title}</h3>
               <p className="text-gray-600 mb-6 text-sm leading-relaxed">
                 {content.description}
               </p>
@@ -56,7 +55,7 @@ export const Adaptability: React.FC = () => {
                 <div className="relative z-10 bg-white p-6 rounded-lg shadow-lg w-full max-w-sm">
                   <h4 className="text-gray-500 text-xs uppercase tracking-wider mb-4 font-semibold">Typ klauzule</h4>
                   <div className="flex items-center justify-center mb-4">
-                    <div className="w-40 h-40 rounded-full relative" style={{ background: 'conic-gradient(#3b82f6 0% 40%, #bfdbfe 40% 100%)' }}>
+                    <div className="w-40 h-40 rounded-full relative" style={{ background: 'conic-gradient(#1e6cd9 0% 40%, #bfdbfe 40% 100%)' }}>
                       <div className="absolute inset-4 bg-white rounded-full flex items-center justify-center">
                         <div className="text-center">
                           <span className="block text-2xl font-bold text-gray-800">100%</span>
@@ -65,7 +64,7 @@ export const Adaptability: React.FC = () => {
                     </div>
                   </div>
                   <div className="flex justify-between text-xs text-gray-600 px-4">
-                    <div className="flex items-center"><span className="w-3 h-3 bg-[#3b82f6] rounded-sm mr-2"></span>Standardní</div>
+                    <div className="flex items-center"><span className="w-3 h-3 bg-[#1e6cd9] rounded-sm mr-2"></span>Standardní</div>
                     <div className="flex items-center"><span className="w-3 h-3 bg-[#bfdbfe] rounded-sm mr-2"></span>Nestandardní</div>
                   </div>
                 </div>
@@ -83,7 +82,7 @@ export const Adaptability: React.FC = () => {
                       </div>
                     </div>
                     <div className="p-4">
-                      <button className="bg-[#3b82f6] text-white text-xs px-3 py-1.5 rounded-sm mb-4 font-medium shadow-sm hover:bg-blue-600 transition-colors">
+                      <button className="bg-[#1e6cd9] text-white text-xs px-3 py-1.5 rounded-sm mb-4 font-medium shadow-sm hover:bg-blue-600 transition-colors">
                         Přenést dokumenty
                       </button>
                       <div className="space-y-2">
@@ -105,7 +104,7 @@ export const Adaptability: React.FC = () => {
         {content.layout === 'code' && (
           <div className="bg-white rounded-xl overflow-hidden border border-blue-100 flex flex-col lg:flex-row shadow-sm">
             <div className="p-8 lg:p-12 lg:w-1/2">
-              <h3 className="text-3xl font-bold text-[#3b82f6] mb-4">{content.title}</h3>
+              <h3 className="text-3xl font-bold text-[#1e6cd9] mb-4">{content.title}</h3>
               <p className="text-gray-600 mb-6 text-sm leading-relaxed">
                 {content.description}
               </p>
@@ -153,7 +152,7 @@ export const Adaptability: React.FC = () => {
         {/* Header */}
         <ScrollReveal>
           <div className="text-center mb-16 max-w-4xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-medium text-blue-400 mb-6">
+            <h2 className="text-2xl md:text-3xl font-medium text-[#1e6cd9] mb-6">
               Řešení které se vám přizpůsobí
             </h2>
             <p className="text-gray-600 text-sm md:text-base leading-relaxed">
@@ -181,7 +180,7 @@ export const Adaptability: React.FC = () => {
                   onClick={() => setActiveTab(tab)}
                   className={`px-6 py-2 rounded-md text-sm font-medium transition-all duration-200 border whitespace-nowrap ${
                     activeTab === tab
-                      ? 'bg-[#3b82f6] text-white border-[#3b82f6] shadow-md'
+                      ? 'bg-[#1e6cd9] text-white border-[#1e6cd9] shadow-md'
                       : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300 hover:bg-gray-50'
                   }`}
                 >
@@ -205,7 +204,7 @@ export const Adaptability: React.FC = () => {
               <ScrollReveal delay={idx * 100}>
                 <div className="flex items-center gap-4 mb-8">
                   <div className="h-[2px] bg-blue-100 flex-grow"></div>
-                  <h3 className="text-blue-500 font-bold uppercase tracking-widest text-xs whitespace-nowrap">
+                  <h3 className="text-[#1e6cd9] font-bold uppercase tracking-widest text-xs whitespace-nowrap">
                     {tab}
                   </h3>
                   <div className="h-[2px] bg-blue-100 flex-grow"></div>

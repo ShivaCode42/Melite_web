@@ -8,7 +8,7 @@ export const Problems: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-medium text-blue-500">
+            <h2 className="text-2xl md:text-3xl font-medium text-[#1e6cd9]">
               Zní vám tyto problémy povědomě?
             </h2>
           </div>
@@ -27,7 +27,7 @@ export const Problems: React.FC = () => {
                       <Icon size={24} strokeWidth={1.5} />
                     )}
                   </div>
-                  <h3 className="text-md font-bold text-[#2d76d8] mb-4 leading-tight">
+                  <h3 className="text-md font-bold text-[#1e6cd9] mb-4 leading-tight">
                     {problem.title}
                   </h3>
                   <p className="text-gray-600 text-xs leading-relaxed font-light">

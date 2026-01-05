@@ -15,7 +15,7 @@ export const FAQ: React.FC = () => {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-medium text-blue-400">
+            <h2 className="text-2xl md:text-3xl font-medium text-[#1e6cd9]">
               Nejčastější dotazy
             </h2>
           </div>
@@ -36,14 +36,14 @@ export const FAQ: React.FC = () => {
                     className="w-full flex items-center justify-between p-5 text-left focus:outline-none transition-colors"
                   >
                     <span className={`text-sm md:text-base font-medium pr-4 transition-colors duration-300 ${
-                      isOpen ? 'text-blue-600' : 'text-gray-700'
+                      isOpen ? 'text-[#1e6cd9]' : 'text-gray-700'
                     }`}>
                       {item.question}
                     </span>
                     <div className="flex-shrink-0">
                       <div className={`w-8 h-8 rounded-md border flex items-center justify-center transition-all duration-300 ${
                         isOpen 
-                          ? 'bg-blue-50 text-blue-500 border-blue-200' 
+                          ? 'bg-blue-50 text-[#1e6cd9] border-blue-200' 
                           : 'bg-white text-gray-300 border-gray-200 hover:border-blue-300 hover:text-blue-400'
                       }`}>
                         {isOpen ? (

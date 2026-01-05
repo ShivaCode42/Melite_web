@@ -9,7 +9,7 @@ export const Stats: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-medium text-blue-400">
+            <h2 className="text-2xl md:text-3xl font-medium text-[#1e6cd9]">
               Proč si vybrat SIESE?
             </h2>
           </div>
@@ -26,7 +26,7 @@ export const Stats: React.FC = () => {
                 <div 
                   className="bg-white p-8 border border-blue-100 shadow-sm hover:shadow-md transition-all duration-300 text-left min-h-[200px] flex flex-col justify-center h-full"
                 >
-                  <div className="text-4xl font-light text-[#4a90e2] mb-4">
+                  <div className="text-4xl font-light text-[#1e6cd9] mb-4">
                     <Counter end={numericValue} suffix={suffix} duration={1500} />
                   </div>
                   <p className="text-sm text-gray-800 font-medium leading-relaxed">
