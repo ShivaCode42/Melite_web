@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ScrollReveal } from './ScrollReveal';
 
@@ -10,62 +11,83 @@ export const PartnerSection: React.FC = () => {
           <div className="bg-white border border-blue-100 rounded-sm shadow-sm p-8 md:p-16 lg:p-20">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
               
-              {/* Logo Side - Reconstructed for 100% accuracy to the reference image */}
+              {/* Logo Side - Reconstructed with extreme precision to match the provided reference image */}
               <div className="flex-shrink-0 flex items-center justify-center w-full lg:w-1/2">
-                <div className="relative w-full max-w-[360px]">
+                <div className="relative w-full max-w-[420px]">
                   <svg 
-                    viewBox="0 0 400 180" 
+                    viewBox="0 0 380 140" 
                     fill="none" 
                     xmlns="http://www.w3.org/2000/svg" 
                     className="w-full h-auto"
                   >
-                    {/* Grey Dot Grid - 15 columns, 5 rows */}
-                    <g>
-                      {Array.from({ length: 5 }).map((_, row) => 
-                        Array.from({ length: 15 }).map((_, col) => {
-                          // Skip the spot where the big red square is
-                          if (row === 4 && col === 0) return null;
-                          // Skip the spots where small red squares are (Row 4, Cols 11-14)
-                          if (row === 3 && col >= 10 && col <= 13) return null;
-                          
-                          return (
-                            <rect 
-                              key={`dot-${row}-${col}`} 
-                              x={col * 22 + 10} 
-                              y={row * 22 + 20} 
-                              width="14" 
-                              height="14" 
-                              fill="#D1D5DB" 
-                            />
-                          );
-                        })
-                      )}
-                    </g>
+                    {/* Grid definitions based on the precise layout of the provided Nesax logo image */}
                     
-                    {/* Big Red Accent Square - Bottom Left (Row 5, Col 1) */}
-                    <rect x="10" y="108" width="36" height="36" fill="#E31E24" />
-                    
-                    {/* Text: nesax - Bold, Italic, Black */}
+                    {/* Vertical block on the left (Rows 0-3) */}
+                    {[0, 1, 2].map(col => 
+                      [0, 1, 2, 3].map(row => (
+                        <rect 
+                          key={`gray-top-${col}-${row}`} 
+                          x={10 + col * 13} 
+                          y={10 + row * 13} 
+                          width="9" 
+                          height="9" 
+                          fill="#cccccc" 
+                        />
+                      ))
+                    )}
+
+                    {/* Row 4: Gray dots followed by 5 Red dots precisely under the 'ax' */}
+                    {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22].map(col => {
+                      const isRed = col >= 18 && col <= 22;
+                      return (
+                        <rect 
+                          key={`row-4-${col}`} 
+                          x={10 + col * 13} 
+                          y={10 + 4 * 13} 
+                          width="9" 
+                          height="9" 
+                          fill={isRed ? "#e31e24" : "#cccccc"} 
+                        />
+                      );
+                    })}
+
+                    {/* Row 5: All gray dots extension */}
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22].map(col => (
+                      <rect 
+                        key={`row-5-${col}`} 
+                        x={10 + col * 13} 
+                        y={10 + 5 * 13} 
+                        width="9" 
+                        height="9" 
+                        fill="#cccccc" 
+                      />
+                    ))}
+
+                    {/* Row 6: The large red accent square on the far left + Gray dots extension */}
+                    <rect x="10" y={10 + 6 * 13 - 4} width="22" height="22" fill="#e31e24" />
+                    {[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22].map(col => (
+                      <rect 
+                        key={`row-6-${col}`} 
+                        x={10 + col * 13} 
+                        y={10 + 6 * 13} 
+                        width="9" 
+                        height="9" 
+                        fill="#cccccc" 
+                      />
+                    ))}
+
+                    {/* "nesax" Typography - Precise matching of the italic bold sans-serif style */}
                     <text 
-                      x="75" 
-                      y="95" 
-                      fill="#262626" 
+                      x="58" 
+                      y="54" 
+                      fill="#231f20" 
                       style={{ 
-                        fontStyle: 'italic', 
-                        fontWeight: '900', 
-                        fontSize: '92px', 
-                        fontFamily: 'Arial Black, Arial, sans-serif',
-                        letterSpacing: '-4px'
+                        font: 'italic bold 76px Arial, Helvetica, sans-serif',
+                        letterSpacing: '-2px'
                       }}
                     >
                       nesax
                     </text>
-                    
-                    {/* 4 Small Red Squares - Aligned under 'ax' (Row 4, Cols 11-14) */}
-                    <rect x="228" y="86" width="18" height="12" fill="#E31E24" />
-                    <rect x="252" y="86" width="18" height="12" fill="#E31E24" />
-                    <rect x="276" y="86" width="18" height="12" fill="#E31E24" />
-                    <rect x="300" y="86" width="18" height="12" fill="#E31E24" />
                   </svg>
                 </div>
               </div>
@@ -79,7 +101,7 @@ export const PartnerSection: React.FC = () => {
                   Společnost Nesax je oficiálním partnerem pro implementaci systému Melite.
                 </p>
                 
-                {/* Button with Highlighting Glow Effect (No Movement) */}
+                {/* Contact Button */}
                 <a 
                   href="https://www.nesax.cz/"
                   target="_blank"
