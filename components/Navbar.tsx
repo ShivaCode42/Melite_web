@@ -1,10 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
-import { NAV_LINKS } from '../constants';
+import React, { useState, useEffect, useRef } from 'react';
+import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
+import { NAV_LINKS, SOLUTION_INDUSTRIES } from '../constants';
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+  onNavigate?: (href: string) => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
+  const [isMobileSolutionsOpen, setIsMobileSolutionsOpen] = useState(false);
+
+  const solutionsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,21 +23,48 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  // Click outside to close the dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (solutionsRef.current && !solutionsRef.current.contains(event.target as Node)) {
+        setIsSolutionsOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsSolutionsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsOpen(false);
-    
+    setIsSolutionsOpen(false);
+
+    if (onNavigate) {
+      onNavigate(href);
+      return;
+    }
+
     if (href.startsWith('#')) {
       const element = document.querySelector(href);
       if (element) {
-        // Offset for the fixed navbar height
         const offset = 72;
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - offset;
 
         window.scrollTo({
           top: offsetPosition,
-          behavior: 'smooth'
+          behavior: 'smooth',
         });
       }
     } else {
@@ -48,40 +83,144 @@ export const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-[60px]' : 'h-[72px]'}`}>
           <div className="flex items-center">
+            {/* Logo */}
             <div className="flex-shrink-0">
               <span 
-                className={`font-bold text-xl tracking-wider cursor-pointer transition-colors duration-300 ${
+                className={`font-bold text-xl tracking-wider cursor-pointer transition-colors duration-300 flex items-center gap-1 ${
                   isScrolled ? 'text-[#1a5bb5]' : 'text-white'
                 }`} 
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                onClick={(e) => {
+                  if (onNavigate) {
+                    onNavigate('/');
+                  } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }}
               >
                 MELITE
               </span>
             </div>
+
+            {/* Desktop Navigation */}
             <div className="hidden md:block ml-10">
-              <div className="flex items-baseline space-x-8">
-                {NAV_LINKS.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    onClick={(e) => handleScrollToSection(e, link.href)}
-                    className={`px-3 py-2 text-sm font-medium transition-all duration-300 ${
-                      isScrolled 
-                        ? 'text-gray-600 hover:text-[#1a5bb5]' 
-                        : 'text-gray-100 hover:text-white'
-                    }`}
-                  >
-                    {link.name}
-                  </a>
-                ))}
+              <div className="flex items-center space-x-6">
+                {NAV_LINKS.map((link) => {
+                  if (link.hasDropdown) {
+                    return (
+                      <div key={link.name} className="relative" ref={solutionsRef}>
+                        <button
+                          type="button"
+                          onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
+                          className={`inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium transition-all duration-200 rounded-md cursor-pointer ${
+                            isScrolled 
+                              ? isSolutionsOpen
+                                ? 'text-[#1a5bb5] bg-blue-50'
+                                : 'text-gray-700 hover:text-[#1a5bb5] hover:bg-gray-50' 
+                              : isSolutionsOpen
+                              ? 'text-white bg-white/20'
+                              : 'text-gray-100 hover:text-white hover:bg-white/10'
+                          }`}
+                          aria-expanded={isSolutionsOpen}
+                          aria-haspopup="true"
+                        >
+                          <span>{link.name}</span>
+                          <ChevronDown 
+                            size={15} 
+                            className={`transition-transform duration-200 ${
+                              isSolutionsOpen ? 'rotate-180' : ''
+                            }`} 
+                          />
+                        </button>
+
+                        {/* Dropdown Menu - Styled based on reference image and enhanced for site graphics */}
+                        <div 
+                          className={`absolute top-full left-0 mt-2 w-[340px] bg-white rounded-2xl shadow-2xl border border-blue-100/90 py-2.5 px-2.5 transition-all duration-200 transform origin-top-left z-50 ${
+                            isSolutionsOpen 
+                              ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto' 
+                              : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
+                          }`}
+                          style={{
+                            boxShadow: '0 20px 40px -8px rgba(13, 59, 130, 0.16), 0 0 0 1px rgba(219, 234, 254, 0.8)'
+                          }}
+                        >
+                          <div className="px-3 pt-1.5 pb-2 text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                            Řešení dle odvětví
+                          </div>
+
+                          <div className="space-y-1">
+                            {SOLUTION_INDUSTRIES.map((industry) => {
+                              const Icon = industry.icon;
+                              return (
+                                <a
+                                  key={industry.id}
+                                  href={industry.href}
+                                  onClick={(e) => handleLinkClick(e, industry.href)}
+                                  className="group flex items-center justify-between p-2.5 rounded-xl transition-all duration-150 hover:bg-blue-50/80 cursor-pointer"
+                                >
+                                  <div className="flex items-center gap-3 min-w-0">
+                                    <div className="w-9 h-9 rounded-lg bg-blue-50 text-[#1a5bb5] group-hover:bg-[#1a5bb5] group-hover:text-white flex items-center justify-center flex-shrink-0 transition-all duration-200 shadow-sm">
+                                      <Icon size={18} strokeWidth={2} />
+                                    </div>
+                                    <div className="min-w-0">
+                                      <span className="text-sm font-semibold text-gray-900 group-hover:text-[#1a5bb5] transition-colors block truncate">
+                                        {industry.name}
+                                      </span>
+                                      <span className="text-[11px] text-gray-500 block truncate font-light">
+                                        {industry.description}
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <ChevronRight 
+                                    size={15} 
+                                    className="text-gray-300 group-hover:text-[#1a5bb5] group-hover:translate-x-0.5 transition-all flex-shrink-0 ml-2" 
+                                  />
+                                </a>
+                              );
+                            })}
+                          </div>
+
+                          <div className="mt-2.5 pt-2 border-t border-gray-100">
+                            <a
+                              href="#reseni"
+                              onClick={(e) => {
+                                setIsSolutionsOpen(false);
+                                handleLinkClick(e, '#reseni');
+                              }}
+                              className="flex items-center justify-between px-3 py-2 text-xs font-semibold text-[#1a5bb5] hover:bg-blue-50/60 rounded-lg transition-colors group"
+                            >
+                              <span>Všechna řešení platformy</span>
+                              <span className="transform group-hover:translate-x-1 transition-transform">&rarr;</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      onClick={(e) => handleLinkClick(e, link.href)}
+                      className={`px-3 py-2 text-sm font-medium transition-all duration-300 rounded-md ${
+                        isScrolled 
+                          ? 'text-gray-600 hover:text-[#1a5bb5] hover:bg-gray-50' 
+                          : 'text-gray-100 hover:text-white hover:bg-white/10'
+                      }`}
+                    >
+                      {link.name}
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>
           
+          {/* Contact Button */}
           <div className="hidden md:block">
             <a
               href="#kontakt"
-              onClick={(e) => handleScrollToSection(e, '#kontakt')}
+              onClick={(e) => handleLinkClick(e, '#kontakt')}
               className={`px-5 py-2.5 rounded-sm text-sm font-medium transition-all duration-300 shadow-sm ${
                 isScrolled
                   ? 'bg-[#1a5bb5] hover:bg-blue-700 text-white'
@@ -92,6 +231,7 @@ export const Navbar: React.FC = () => {
             </a>
           </div>
 
+          {/* Mobile hamburger button */}
           <div className="-mr-2 flex md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -100,14 +240,14 @@ export const Navbar: React.FC = () => {
               }`}
               aria-expanded={isOpen}
             >
-              <span className="sr-only">Open main menu</span>
+              <span className="sr-only">Otevřít hlavní menu</span>
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu, show/hide based on menu state */}
+      {/* Mobile menu dropdown */}
       <div 
         className={`md:hidden absolute w-full transition-all duration-300 ease-in-out origin-top ${
           isOpen 
@@ -115,12 +255,76 @@ export const Navbar: React.FC = () => {
             : 'opacity-0 scale-y-0 pointer-events-none'
         } ${isScrolled ? 'bg-white shadow-xl' : 'bg-[#0d1e35]'}`}
       >
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-100">
-          {NAV_LINKS.map((link) => (
+        <div className="px-3 pt-3 pb-4 space-y-1 sm:px-4 border-t border-gray-100/20 max-h-[85vh] overflow-y-auto">
+          
+          {/* Řešení mobile item with expandable list */}
+          <div>
+            <button
+              onClick={() => setIsMobileSolutionsOpen(!isMobileSolutionsOpen)}
+              className={`w-full flex items-center justify-between px-3 py-2.5 rounded-md text-base font-medium transition-colors ${
+                isScrolled ? 'text-gray-700 hover:bg-gray-50' : 'text-gray-200 hover:text-white hover:bg-white/10'
+              }`}
+            >
+              <span className="font-semibold">Řešení</span>
+              <ChevronDown 
+                size={18} 
+                className={`transition-transform duration-200 ${
+                  isMobileSolutionsOpen ? 'rotate-180 text-[#1a5bb5]' : ''
+                }`} 
+              />
+            </button>
+
+            {isMobileSolutionsOpen && (
+              <div className="pl-3 pr-2 py-2 space-y-1 mt-1 border-l-2 border-[#1a5bb5]/50 ml-3">
+                <div className="px-2 pb-1 text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                  Odvětví:
+                </div>
+                {SOLUTION_INDUSTRIES.map((industry) => {
+                  const Icon = industry.icon;
+                  return (
+                    <a
+                      key={industry.id}
+                      href={industry.href}
+                      onClick={(e) => {
+                        setIsMobileSolutionsOpen(false);
+                        handleLinkClick(e, industry.href);
+                      }}
+                      className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
+                        isScrolled
+                          ? 'text-gray-800 hover:text-[#1a5bb5] hover:bg-blue-50'
+                          : 'text-gray-200 hover:text-white hover:bg-white/10'
+                      }`}
+                    >
+                      <div className="w-7 h-7 rounded-md bg-blue-100 text-[#1a5bb5] flex items-center justify-center flex-shrink-0">
+                        <Icon size={14} />
+                      </div>
+                      <span className="font-medium">{industry.name}</span>
+                    </a>
+                  );
+                })}
+
+                <a
+                  href="#reseni"
+                  onClick={(e) => {
+                    setIsMobileSolutionsOpen(false);
+                    handleLinkClick(e, '#reseni');
+                  }}
+                  className={`block px-3 py-2 text-xs font-semibold ${
+                    isScrolled ? 'text-[#1a5bb5]' : 'text-blue-300'
+                  }`}
+                >
+                  Přehled platformy SIESE &rarr;
+                </a>
+              </div>
+            )}
+          </div>
+
+          {/* Remaining links */}
+          {NAV_LINKS.filter((link) => !link.hasDropdown).map((link) => (
             <a
               key={link.name}
               href={link.href}
-              onClick={(e) => handleScrollToSection(e, link.href)}
+              onClick={(e) => handleLinkClick(e, link.href)}
               className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
                 isScrolled ? 'text-gray-600 hover:bg-gray-50' : 'text-gray-200 hover:text-white hover:bg-white/10'
               }`}
@@ -128,10 +332,11 @@ export const Navbar: React.FC = () => {
               {link.name}
             </a>
           ))}
+
           <a
             href="#kontakt"
-            onClick={(e) => handleScrollToSection(e, '#kontakt')}
-            className="block w-full text-center text-white bg-[#1a5bb5] hover:bg-blue-600 px-3 py-3 rounded-md text-base font-medium mt-4 transition-colors"
+            onClick={(e) => handleLinkClick(e, '#kontakt')}
+            className="block w-full text-center text-white bg-[#1a5bb5] hover:bg-blue-600 px-3 py-3 rounded-md text-base font-medium mt-4 transition-colors shadow-sm"
           >
             Kontaktujte nás
           </a>

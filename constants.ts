@@ -1,7 +1,181 @@
-import { FileText, ShieldAlert, BadgeDollarSign, Scale, Search, ShieldCheck, FileCheck, PenTool, Archive, Handshake, Headphones, Cpu } from 'lucide-react';
+import { 
+  FileText, ShieldAlert, BadgeDollarSign, Scale, Search, ShieldCheck, 
+  FileCheck, PenTool, Archive, Handshake, Headphones, Cpu,
+  Radio, Landmark, Building2, Activity, Zap
+} from 'lucide-react';
 
-export const NAV_LINKS = [
-  { name: 'Řešení', href: '#reseni' },
+export interface SolutionIndustry {
+  id: string;
+  name: string;
+  href: string;
+  description: string;
+  icon: any;
+}
+
+export const SOLUTION_INDUSTRIES: SolutionIndustry[] = [
+  {
+    id: 'telekomunikace',
+    name: 'Telekomunikace',
+    href: '/telekomunikace',
+    description: 'Automatizace smluv a masový digitální onboarding klientů.',
+    icon: Radio,
+  },
+  {
+    id: 'finance',
+    name: 'Finance',
+    href: '/finance',
+    description: 'Úvěrové a pojišťovací procesy, AML a striktní compliance.',
+    icon: Landmark,
+  },
+  {
+    id: 'statni-sprava',
+    name: 'Státní správa',
+    href: '/statni-sprava',
+    description: 'Důvěryhodný archiv, eIDAS, spisová služba a skartační řád.',
+    icon: Building2,
+  },
+  {
+    id: 'farmacie-zdravotnictvi',
+    name: 'Farmacie a zdravotnictví',
+    href: '/reseni/farmacie-a-zdravotnictvi',
+    description: 'Validovaná dokumentace klinických studií a ochrana pacientských dat.',
+    icon: Activity,
+  },
+  {
+    id: 'energetika-utility',
+    name: 'Energetika a utility',
+    href: '/reseni/energetika-a-utility',
+    description: 'Řízení dodavatelských smluv, revizních zpráv a servisní agendy.',
+    icon: Zap,
+  },
+];
+
+export interface IndustryDetail {
+  id: string;
+  name: string;
+  tagline: string;
+  heroDescription: string;
+  stats: { value: string; label: string }[];
+  keyChallenges: { title: string; desc: string }[];
+  solutions: { title: string; desc: string }[];
+}
+
+export const INDUSTRY_DETAILS: Record<string, IndustryDetail> = {
+  'telekomunikace': {
+    id: 'telekomunikace',
+    name: 'Telekomunikace',
+    tagline: 'Řešení pro telekomunikační operátory a poskytovatele připojení',
+    heroDescription: 'Zpracovávejte statisíce klientských smluv, dodatků a protokolů bez prodlev. Digitální podpis přes SMS i BankID a okamžitá aktivace služeb.',
+    stats: [
+      { value: '98 %', label: 'smluv podepsáno v den doručení' },
+      { value: '3x', label: 'rychlejší onboarding nových zákazníků' },
+      { value: '0 Kč', label: 'náklady na fyzický tisk a archivaci papíru' },
+    ],
+    keyChallenges: [
+      { title: 'Vysoké objemy smluvních dokumentů', desc: 'Desítky tisíc nových smluv měsíčně zatěžují call centra i administrativu.' },
+      { title: 'Časové prodlevy při podpisu kurýrem', desc: 'Fyzické doručování zpožďuje zahájení fakturace a zvyšuje míru storna smluv.' },
+      { title: 'Zabezpečení osobních údajů', desc: 'Přísné nároky GDPR a telekomunikačního zákona na archivaci a důvěryhodnost.' }
+    ],
+    solutions: [
+      { title: 'Bleskový online podpis přes SMS i BankID', desc: 'Zákazník podepíše smlouvu na svém mobilním telefonu během 60 sekund.' },
+      { title: 'Automatické párování s billingem a CRM', desc: 'Dokument se po podpisu sám zaeviduje do zákaznického profilu a aktivuje službu.' },
+      { title: 'Dlouhodobý důvěryhodný archiv s časovými razítky', desc: 'Garance právní platnosti smluv i po mnoha letech pro potřeby ČTÚ a soudů.' }
+    ]
+  },
+  'finance': {
+    id: 'finance',
+    name: 'Finance & Pojišťovnictví',
+    tagline: 'Bezpečné a regulované řešení pro banky, fintech a pojišťovny',
+    heroDescription: 'Plovoucí schvalovací procesy pro úvěrové žádosti, pojistné smlouvy a AML dokumentaci s plným souladem s požadavky ČNB a EBA.',
+    stats: [
+      { value: '100 %', label: 'soulad s regulacemi ČNB a eIDAS' },
+      { value: '-70 %', label: 'doba zpracování úvěrové dokumentace' },
+      { value: 'Audit-ready', label: 'okamžitý přístup k úplné historii změn' },
+    ],
+    keyChallenges: [
+      { title: 'Přísná regulace a auditní nároky', desc: 'Požadavky ČNB, AML a eIDAS na jednoznačnou identifikaci a nepopiratelnost podpisu.' },
+      { title: 'Komplexní schvalovací kolečka', desc: 'Víceúrovňové schvalování rizikovými analytiky, právníky a manažery.' },
+      { title: 'Riziko neplatnosti elektronického podpisu', desc: 'Obava z právní napadnutelnosti smluv při soudních či exekučních sporech.' }
+    ],
+    solutions: [
+      { title: 'Kvalifikovaná časová razítka a pečeti', desc: 'Všechny finanční dokumenty splňují nejvyšší evropské standardy digitální důvěry.' },
+      { title: 'Přísně řízená přístupová práva (RBAC)', desc: 'Zaměstnanci vidí jen data nezbytná pro jejich roli s detailním logováním každého zobrazení.' },
+      { title: 'Integrace do core-bankingových systémů', desc: 'Hladké napojení na hlavní bankovní software přes robustní REST API.' }
+    ]
+  },
+  'statni-sprava': {
+    id: 'statni-sprava',
+    name: 'Státní správa & Veřejný sektor',
+    tagline: 'Elektronická spisová služba a certifikovaná archivace pro úřady a samosprávy',
+    heroDescription: 'Moderní a legislativně čistá správa spisů, úředních desek a smluv v souladu se zákonem o archivnictví a spisové službě.',
+    stats: [
+      { value: '100 %', label: 'soulad se zákonem č. 499/2004 Sb.' },
+      { value: 'eIDAS', label: 'certifikované časové razítkování' },
+      { value: '10+ let', label: 'garance čitelnosti v balíčcích AIP' },
+    ],
+    keyChallenges: [
+      { title: 'Zákonné požadavky na skartační řízení', desc: 'Nutnost přesně hlídat skartační lhůty (A/S/V) a garantovat doložitelné zničení či předání do archivu.' },
+      { title: 'Přerazítkovávání a stárnutí certifikátů', desc: 'Riziko, že po expiraci certifikátu ztratí úřední listina právní účinnost.' },
+      { title: 'Napojení na Datové schránky a PVS', desc: 'Nutnost automatizovaného příjmu a vypravování bez manuálního stahování.' }
+    ],
+    solutions: [
+      { title: 'Automatizované přerazítkování (LTV)', desc: 'Systém sám v předstihu obnovuje časová razítka před vypršením jejich platnosti.' },
+      { title: 'Standardizované balíčky SIP / AIP / DIP', desc: 'Dlouhodobé uchování dokumentů ve formátech PDF/A s kompletními XML metadaty.' },
+      { title: 'Řízené skartační protokoly', desc: 'Generování skartačních návrhů jedním kliknutím s automatickou evidencí protokolu.' }
+    ]
+  },
+  'farmacie-zdravotnictvi': {
+    id: 'farmacie-zdravotnictvi',
+    name: 'Farmacie & Zdravotnictví',
+    tagline: 'Ochrana citlivé zdravotnické dokumentace a validace pro klinické studie',
+    heroDescription: 'Zabezpečená platforma pro nemocnice, laboratoře a farmaceutické společnosti s důrazem na integritu dat a ochranu citlivých informací.',
+    stats: [
+      { value: 'GDPR & HIPAA', label: 'nejvyšší úroveň zabezpečení citlivých údajů' },
+      { value: '21 CFR Part 11', label: 'připraveno pro validaci auditní stopy' },
+      { value: 'Zero-data leak', label: 'šifrování dat při přenosu i uložení' },
+    ],
+    keyChallenges: [
+      { title: 'Mimořádně citlivá zdravotní data', desc: 'Přísná legislativa pro nakládání se zdravotnickou dokumentací a anonymizací.' },
+      { title: 'Regulace klinických studií a šarží', desc: 'Požadavky SÚKL a EMA na nepozměnitelnost záznamů a kompletní auditní trail.' },
+      { title: 'Předávání dokumentace mezi pracovišti', desc: 'Bezpečné sdílení zpráv a konsilií bez rizika neoprávněného nahlížení.' }
+    ],
+    solutions: [
+      { title: 'Kryptografická integrita záznamů', desc: 'Nemožnost zpětné úpravy schválených protokolů a výsledků testů.' },
+      { title: 'Role-based access s dvoufaktorovou autentizací', desc: 'Ověření lékařů a výzkumníků pro přístup k vybraným složkám.' },
+      { title: 'Bezpečné portálové podepisování', desc: 'Informované souhlasy pacientů podepsané přímo na tabletu s biometrickým profilem.' }
+    ]
+  },
+  'energetika-utility': {
+    id: 'energetika-utility',
+    name: 'Energetika & Utility',
+    tagline: 'Správa technické, revizní a smluvní dokumentace pro energetický sektor',
+    heroDescription: 'Centrální evidence odběrných míst, revizních zpráv, smluv s velkoodběrateli a servisní dokumentace pro energetické a distribuční společnosti.',
+    stats: [
+      { value: '100 tis+', label: 'smluvních vztahů pod jednou střechou' },
+      { value: '-85 %', label: 'času stráveného dohledáváním revizí' },
+      { value: '24/7', label: 'okamžitý přístup techniků v terénu' },
+    ],
+    keyChallenges: [
+      { title: 'Rozsáhlá technická a výkresová dokumentace', desc: 'Stovky gigabajtů schémat, revizních knih a protokolů o připojení.' },
+      { title: 'Koordinace terénních techniků a revizáků', desc: 'Nutnost rychlého podpisu předávacích protokolů přímo na stavbách a stanicích.' },
+      { title: 'Pravidelné revize a zákonné lhůty', desc: 'Riziko prošvihnutí zákonných termínů revizí zařízení a vedení.' }
+    ],
+    solutions: [
+      { title: 'Mobilní podepisování v terénu', desc: 'Technik nechá zákazníka podepsat protokol na tabletu a data se ihned propíšou do centrály.' },
+      { title: 'Automatické notifikace blížících se revizí', desc: 'Systém hlídá termíny a s předstihem upozorní odpovědného dispečera.' },
+      { title: 'Velkokapacitní objektové úložiště DDS', desc: 'Škálovatelné úložiště navržené pro objemné technické výkresy a skeny.' }
+    ]
+  }
+};
+
+export interface NavLink {
+  name: string;
+  href: string;
+  hasDropdown?: boolean;
+}
+
+export const NAV_LINKS: NavLink[] = [
+  { name: 'Řešení', href: '#reseni', hasDropdown: true },
   { name: 'Produkty', href: '#produkty' },
   { name: 'O nás', href: '#o-nas' },
   { name: 'Kontakt', href: '#kontakt' },
