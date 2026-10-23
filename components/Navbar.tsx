@@ -222,20 +222,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                               </div>
                             </div>
                           </div>
-
-                          <div className="mt-3 pt-2.5 border-t border-gray-100">
-                            <a
-                              href="#reseni"
-                              onClick={(e) => {
-                                setIsSolutionsOpen(false);
-                                handleLinkClick(e, '#reseni');
-                              }}
-                              className="flex items-center justify-between px-3 py-2 text-xs font-semibold text-[#1a5bb5] hover:bg-blue-50/60 rounded-lg transition-colors group"
-                            >
-                              <span>Všechna řešení platformy</span>
-                              <span className="transform group-hover:translate-x-1 transition-transform">&rarr;</span>
-                            </a>
-                          </div>
                         </div>
                       </div>
                     );
