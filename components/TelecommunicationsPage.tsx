@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { ScrollReveal } from './ScrollReveal';
 import { ConsultationModal } from './ConsultationModal';
 import { 
-  Radio, 
   ShieldCheck, 
   Server, 
   FileCheck2, 
@@ -98,18 +97,10 @@ export const TelecommunicationsPage: React.FC<TelecommunicationsPageProps> = ({
         <div className="absolute -top-32 -right-32 w-96 h-96 bg-blue-400 rounded-full blur-3xl opacity-20 pointer-events-none"></div>
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <ScrollReveal direction="up" delay={0}>
-            {/* Tag / Štítek */}
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-medium text-blue-100 mb-8 border border-white/20">
-              <Radio size={14} className="text-blue-200" />
-              <span>Telekomunikace</span>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal direction="up" delay={150}>
+          <ScrollReveal direction="up" delay={100}>
             {/* Title / H1 */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold tracking-tight mb-8 leading-[1.2]">
-              Archivace smluv, kterou doložíte i po letech
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-bold tracking-tight mb-8 leading-[1.2]">
+              Telekomunikace
             </h1>
           </ScrollReveal>
 
