@@ -1,7 +1,7 @@
 import { 
   FileText, ShieldAlert, BadgeDollarSign, Scale, Search, ShieldCheck, 
   FileCheck, PenTool, Archive, Handshake, Headphones, Cpu,
-  Radio, Landmark, Building2, Activity, Zap
+  Radio, Landmark, Building2, Activity, Zap, FlaskConical
 } from 'lucide-react';
 
 export interface SolutionIndustry {
@@ -35,18 +35,57 @@ export const SOLUTION_INDUSTRIES: SolutionIndustry[] = [
     icon: Building2,
   },
   {
-    id: 'farmacie-zdravotnictvi',
-    name: 'Farmacie a zdravotnictví',
-    href: '/reseni/farmacie-a-zdravotnictvi',
-    description: 'Validovaná dokumentace klinických studií a ochrana pacientských dat.',
+    id: 'zdravotnictvi',
+    name: 'Zdravotnictví',
+    href: '/zdravotnictvi',
+    description: 'Archivační vrstva, informované souhlasy a ochrana dat.',
     icon: Activity,
+  },
+  {
+    id: 'farmacie',
+    name: 'Farmacie',
+    href: '/farmaie',
+    description: 'Vědecký vývoj, SOP, šaržové záznamy a inspekce SÚKL/EMA.',
+    icon: FlaskConical,
   },
   {
     id: 'energetika-utility',
     name: 'Energetika a utility',
-    href: '/reseni/energetika-a-utility',
-    description: 'Řízení dodavatelských smluv, revizních zpráv a servisní agendy.',
+    href: '/energetika-utility',
+    description: 'Zákaznické smlouvy, as-built dokumentace, revize a NIS2.',
     icon: Zap,
+  },
+];
+
+export interface SolutionDepartment {
+  id: string;
+  name: string;
+  href: string;
+  description: string;
+  icon: any;
+}
+
+export const SOLUTION_DEPARTMENTS: SolutionDepartment[] = [
+  {
+    id: 'pravni-oddeleni',
+    name: 'Právní',
+    href: '/pravni-oddeleni',
+    description: 'Důležité dokumenty a smlouvy ověřitelné i po letech.',
+    icon: Scale,
+  },
+  {
+    id: 'compliance-oddeleni',
+    name: 'Compliance',
+    href: '/compliance-oddeleni',
+    description: 'Retenční pravidla, dohledatelnost a důkazy pod kontrolou.',
+    icon: ShieldCheck,
+  },
+  {
+    id: 'record-management',
+    name: 'Record management',
+    href: '/record-management',
+    description: 'Uplatnění skartačních pravidel, řízení životního cyklu a protokol o skartaci.',
+    icon: Archive,
   },
 ];
 

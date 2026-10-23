@@ -14,6 +14,13 @@ import { IndustryPage } from './components/IndustryPage';
 import { TelecommunicationsPage } from './components/TelecommunicationsPage';
 import { FinancePage } from './components/FinancePage';
 import { PublicSectorPage } from './components/PublicSectorPage';
+import { HealthcarePage } from './components/HealthcarePage';
+import { PharmaPage } from './components/PharmaPage';
+import { EnergetikaUtilityPage } from './components/EnergetikaUtilityPage';
+import { LegalDepartmentPage } from './components/LegalDepartmentPage';
+import { ComplianceDepartmentPage } from './components/ComplianceDepartmentPage';
+import { RecordManagementPage } from './components/RecordManagementPage';
+import { IndustrySolutionsWidget } from './components/IndustrySolutionsWidget';
 import { INDUSTRY_DETAILS } from './constants';
 
 const App: React.FC = () => {
@@ -39,6 +46,63 @@ const App: React.FC = () => {
       document.title = 'Finance — Finanční dokumenty, u kterých doložíte existenci | SIESE';
     } else if (currentPath === '/statni-sprava' || currentPath === '/reseni/statni-sprava') {
       document.title = 'Státní správa — Dlouhodobé uchovávání úředních dokumentů | SIESE';
+    } else if (
+      currentPath === '/zdravotnictvi' || 
+      currentPath === '/reseni/zdravotnictvi' || 
+      currentPath === '/farmacie-a-zdravotnictvi' ||
+      currentPath === '/reseni/farmacie-a-zdravotnictvi'
+    ) {
+      document.title = 'Zdravotnictví — Zdravotnická dokumentace a souhlas pacienta | SIESE';
+    } else if (
+      currentPath === '/farmaie' ||
+      currentPath === '/farmacie' ||
+      currentPath === '/reseni/farmacie' ||
+      currentPath === '/farmaie/' ||
+      currentPath === '/farmacie/'
+    ) {
+      document.title = 'Farmacie a vědecký vývoj — Prokazatelnost předpisů a protokolů | SIESE';
+    } else if (
+      currentPath === '/energetika-utility' ||
+      currentPath === '/reseni/energetika-utility' ||
+      currentPath === '/reseni/energetika-a-utility' ||
+      currentPath === '/energetika-utility/' ||
+      currentPath === '/reseni/energetika-utility/' ||
+      currentPath === '/reseni/energetika-a-utility/'
+    ) {
+      document.title = 'Energetika a utility — Dlouhodobé uchování a dohledatelnost | SIESE';
+    } else if (
+      currentPath === '/pravni-oddeleni' ||
+      currentPath === '/pravni-odděleni' ||
+      currentPath === '/reseni/pravni-oddeleni' ||
+      currentPath === '/reseni/pravni-odděleni' ||
+      currentPath === '/pravni-oddeleni/' ||
+      currentPath === '/pravni-odděleni/' ||
+      currentPath === '/reseni/pravni-oddeleni/' ||
+      currentPath === '/reseni/pravni-odděleni/'
+    ) {
+      document.title = 'Právní oddělení — Důležité dokumenty ověřitelné i po letech | SIESE';
+    } else if (
+      currentPath === '/compliance-oddeleni' ||
+      currentPath === '/compliance-odděleni' ||
+      currentPath === '/compliance' ||
+      currentPath === '/reseni/compliance-oddeleni' ||
+      currentPath === '/reseni/compliance-odděleni' ||
+      currentPath === '/reseni/compliance' ||
+      currentPath === '/compliance-oddeleni/' ||
+      currentPath === '/compliance-odděleni/' ||
+      currentPath === '/compliance/' ||
+      currentPath === '/reseni/compliance-oddeleni/' ||
+      currentPath === '/reseni/compliance-odděleni/' ||
+      currentPath === '/reseni/compliance/'
+    ) {
+      document.title = 'Compliance — Retenční pravidla, dohledatelnost a důkazy pod kontrolou | SIESE';
+    } else if (
+      currentPath === '/record-management' ||
+      currentPath === '/reseni/record-management' ||
+      currentPath === '/record-management/' ||
+      currentPath === '/reseni/record-management/'
+    ) {
+      document.title = 'Record management — Mějte pod kontrolou, co uchovat, co skartovat a co o tom doložit | SIESE';
     } else if (currentPath.startsWith('/reseni/')) {
       const id = currentPath.replace('/reseni/', '').replace(/\/$/, '');
       const ind = INDUSTRY_DETAILS[id];
@@ -111,10 +175,75 @@ const App: React.FC = () => {
     currentPath === '/statni-sprava/' ||
     currentPath === '/reseni/statni-sprava/';
 
+  const isZdravotnictviRoute = 
+    currentPath === '/zdravotnictvi' || 
+    currentPath === '/reseni/zdravotnictvi' || 
+    currentPath === '/zdravotnictvi/' || 
+    currentPath === '/reseni/zdravotnictvi/' ||
+    currentPath === '/farmacie-a-zdravotnictvi' ||
+    currentPath === '/reseni/farmacie-a-zdravotnictvi';
+
+  const isPharmaRoute = 
+    currentPath === '/farmaie' || 
+    currentPath === '/farmacie' || 
+    currentPath === '/reseni/farmacie' ||
+    currentPath === '/farmaie/' ||
+    currentPath === '/farmacie/' ||
+    currentPath === '/reseni/farmacie/';
+
+  const isEnergetikaRoute = 
+    currentPath === '/energetika-utility' || 
+    currentPath === '/reseni/energetika-utility' ||
+    currentPath === '/reseni/energetika-a-utility' ||
+    currentPath === '/energetika-utility/' ||
+    currentPath === '/reseni/energetika-utility/' ||
+    currentPath === '/reseni/energetika-a-utility/';
+
+  const isLegalRoute = 
+    currentPath === '/pravni-oddeleni' || 
+    currentPath === '/pravni-odděleni' || 
+    currentPath === '/reseni/pravni-oddeleni' ||
+    currentPath === '/reseni/pravni-odděleni' ||
+    currentPath === '/pravni-oddeleni/' ||
+    currentPath === '/pravni-odděleni/' ||
+    currentPath === '/reseni/pravni-oddeleni/' ||
+    currentPath === '/reseni/pravni-odděleni/';
+
+  const isComplianceRoute = 
+    currentPath === '/compliance-oddeleni' || 
+    currentPath === '/compliance-odděleni' || 
+    currentPath === '/compliance' || 
+    currentPath === '/reseni/compliance-oddeleni' || 
+    currentPath === '/reseni/compliance-odděleni' || 
+    currentPath === '/reseni/compliance' || 
+    currentPath === '/compliance-oddeleni/' || 
+    currentPath === '/compliance-odděleni/' || 
+    currentPath === '/compliance/' || 
+    currentPath === '/reseni/compliance-oddeleni/' || 
+    currentPath === '/reseni/compliance-odděleni/' || 
+    currentPath === '/reseni/compliance/';
+
+  const isRecordManagementRoute = 
+    currentPath === '/record-management' || 
+    currentPath === '/reseni/record-management' || 
+    currentPath === '/record-management/' || 
+    currentPath === '/reseni/record-management/';
+
   const industryId = currentPath.startsWith('/reseni/') 
     ? currentPath.replace('/reseni/', '').replace(/\/$/, '') 
     : null;
-  const currentIndustry = (industryId && !isTelekomunikaceRoute && !isFinanceRoute && !isStatniSpravaRoute) ? INDUSTRY_DETAILS[industryId] : null;
+  const currentIndustry = (
+    industryId && 
+    !isTelekomunikaceRoute && 
+    !isFinanceRoute && 
+    !isStatniSpravaRoute && 
+    !isZdravotnictviRoute &&
+    !isPharmaRoute &&
+    !isEnergetikaRoute &&
+    !isLegalRoute &&
+    !isComplianceRoute &&
+    !isRecordManagementRoute
+  ) ? INDUSTRY_DETAILS[industryId] : null;
 
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans">
@@ -135,6 +264,36 @@ const App: React.FC = () => {
           onNavigateHome={() => handleNavigate('/')} 
           onNavigateToSection={handleNavigate}
         />
+      ) : isZdravotnictviRoute ? (
+        <HealthcarePage 
+          onNavigateHome={() => handleNavigate('/')} 
+          onNavigateToSection={handleNavigate}
+        />
+      ) : isPharmaRoute ? (
+        <PharmaPage 
+          onNavigateHome={() => handleNavigate('/')} 
+          onNavigateToSection={handleNavigate}
+        />
+      ) : isEnergetikaRoute ? (
+        <EnergetikaUtilityPage 
+          onNavigateHome={() => handleNavigate('/')} 
+          onNavigateToSection={handleNavigate}
+        />
+      ) : isLegalRoute ? (
+        <LegalDepartmentPage 
+          onNavigateHome={() => handleNavigate('/')} 
+          onNavigateToSection={handleNavigate}
+        />
+      ) : isComplianceRoute ? (
+        <ComplianceDepartmentPage 
+          onNavigateHome={() => handleNavigate('/')} 
+          onNavigateToSection={handleNavigate}
+        />
+      ) : isRecordManagementRoute ? (
+        <RecordManagementPage 
+          onNavigateHome={() => handleNavigate('/')} 
+          onNavigateToSection={handleNavigate}
+        />
       ) : currentIndustry ? (
         <>
           <IndustryPage 
@@ -148,6 +307,7 @@ const App: React.FC = () => {
         <>
           <Hero />
           <Problems />
+          <IndustrySolutionsWidget onNavigate={handleNavigate} />
           <Solution />
           <Stats />
           <Automation />

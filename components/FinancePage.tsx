@@ -19,7 +19,8 @@ import {
   CheckCircle,
   FileSearch,
   History,
-  FolderGit2
+  FolderGit2,
+  Server
 } from 'lucide-react';
 
 interface FinancePageProps {
@@ -98,18 +99,10 @@ export const FinancePage: React.FC<FinancePageProps> = ({
         <div className="absolute -top-32 -right-32 w-96 h-96 bg-blue-400 rounded-full blur-3xl opacity-20 pointer-events-none"></div>
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <ScrollReveal direction="up" delay={0}>
-            {/* Tag / Štítek */}
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-medium text-blue-100 mb-8 border border-white/20">
-              <Landmark size={14} className="text-blue-200" />
-              <span>Finance &middot; Banky &middot; Pojišťovny &middot; Investiční společnosti &middot; Fintech</span>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal direction="up" delay={150}>
+          <ScrollReveal direction="up" delay={100}>
             {/* Title / H1 */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-bold tracking-tight mb-8 leading-[1.2]">
-              Finanční dokumenty, u kterých doložíte existenci, původ i integritu po letech
+              Bankovnictví a finance
             </h1>
           </ScrollReveal>
 
@@ -476,6 +469,35 @@ export const FinancePage: React.FC<FinancePageProps> = ({
         </div>
       </section>
 
+      {/* [SEKCE: INTEGRACE - Bezproblémová integrace do vašich systémů a procesů] */}
+      <section className="py-12 md:py-16 bg-dot-grid border-y border-blue-100/70">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="bg-white rounded-2xl border border-blue-100 p-8 md:p-10 shadow-xs flex flex-col md:flex-row items-center gap-6 md:gap-8">
+              <div className="w-16 h-16 rounded-2xl bg-[#edf4fe] text-[#1a5bb5] flex items-center justify-center flex-shrink-0">
+                <Server size={32} />
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 leading-snug">
+                  Bezproblémová integrace do vašich systémů a procesů
+                </h3>
+                <p className="text-sm md:text-base text-gray-600 leading-relaxed font-light">
+                  SIESE se může napojit prostřednictvím REST API na stávající systémy a běžet na vlastní infrastruktuře organizace. Architektura podporuje rozsáhlé objemy dokumentů a jejich přesun mezi úložišti.
+                </p>
+              </div>
+              <div className="flex-shrink-0">
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="bg-[#1a5bb5] hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg text-sm md:text-base transition-colors shadow-sm whitespace-nowrap"
+                >
+                  Konzultovat architekturu
+                </button>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* SECTION 5: Časté otázky */}
       <section className="py-16 md:py-24 bg-[#f8fbff] border-t border-blue-50">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -565,6 +587,12 @@ export const FinancePage: React.FC<FinancePageProps> = ({
           </ScrollReveal>
         </div>
       </section>
+
+      {/* Modal */}
+      <ConsultationModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </div>
   );
 };

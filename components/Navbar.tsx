@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
-import { NAV_LINKS, SOLUTION_INDUSTRIES } from '../constants';
+import { NAV_LINKS, SOLUTION_INDUSTRIES, SOLUTION_DEPARTMENTS } from '../constants';
 
 interface NavbarProps {
   onNavigate?: (href: string) => void;
@@ -132,9 +132,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                           />
                         </button>
 
-                        {/* Dropdown Menu - Styled based on reference image and enhanced for site graphics */}
+                        {/* Dropdown Menu */}
                         <div 
-                          className={`absolute top-full left-0 mt-2 w-[340px] bg-white rounded-2xl shadow-2xl border border-blue-100/90 py-2.5 px-2.5 transition-all duration-200 transform origin-top-left z-50 ${
+                          className={`absolute top-full left-0 mt-2 w-[620px] bg-white rounded-2xl shadow-2xl border border-blue-100/90 py-3 px-3 transition-all duration-200 transform origin-top-left z-50 max-h-[85vh] overflow-y-auto ${
                             isSolutionsOpen 
                               ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto' 
                               : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
@@ -143,43 +143,87 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                             boxShadow: '0 20px 40px -8px rgba(13, 59, 130, 0.16), 0 0 0 1px rgba(219, 234, 254, 0.8)'
                           }}
                         >
-                          <div className="px-3 pt-1.5 pb-2 text-[11px] font-bold uppercase tracking-wider text-gray-400">
-                            Řešení dle odvětví
+                          <div className="grid grid-cols-2 divide-x divide-gray-100">
+                            {/* Sloupec vlevo: Podle oboru */}
+                            <div className="pr-3">
+                              <div className="px-3 pt-1 pb-2 text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                                Podle oboru
+                              </div>
+
+                              <div className="space-y-0.5">
+                                {SOLUTION_INDUSTRIES.map((industry) => {
+                                  const Icon = industry.icon;
+                                  return (
+                                    <a
+                                      key={industry.id}
+                                      href={industry.href}
+                                      onClick={(e) => handleLinkClick(e, industry.href)}
+                                      className="group flex items-center justify-between p-2 rounded-xl transition-all duration-150 hover:bg-blue-50/80 cursor-pointer"
+                                    >
+                                      <div className="flex items-center gap-2.5 min-w-0">
+                                        <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#1a5bb5] group-hover:bg-[#1a5bb5] group-hover:text-white flex items-center justify-center flex-shrink-0 transition-all duration-200 shadow-xs">
+                                          <Icon size={16} strokeWidth={2} />
+                                        </div>
+                                        <div className="min-w-0">
+                                          <span className="text-sm font-semibold text-gray-900 group-hover:text-[#1a5bb5] transition-colors block truncate">
+                                            {industry.name}
+                                          </span>
+                                          <span className="text-[11px] text-gray-500 block truncate font-light">
+                                            {industry.description}
+                                          </span>
+                                        </div>
+                                      </div>
+                                      <ChevronRight 
+                                        size={14} 
+                                        className="text-gray-300 group-hover:text-[#1a5bb5] group-hover:translate-x-0.5 transition-all flex-shrink-0 ml-1.5" 
+                                      />
+                                    </a>
+                                  );
+                                })}
+                              </div>
+                            </div>
+
+                            {/* Sloupec vpravo: Podle oddělení */}
+                            <div className="pl-3">
+                              <div className="px-3 pt-1 pb-2 text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                                Podle oddělení
+                              </div>
+
+                              <div className="space-y-0.5">
+                                {SOLUTION_DEPARTMENTS.map((dept) => {
+                                  const Icon = dept.icon;
+                                  return (
+                                    <a
+                                      key={dept.id}
+                                      href={dept.href}
+                                      onClick={(e) => handleLinkClick(e, dept.href)}
+                                      className="group flex items-center justify-between p-2 rounded-xl transition-all duration-150 hover:bg-blue-50/80 cursor-pointer"
+                                    >
+                                      <div className="flex items-center gap-2.5 min-w-0">
+                                        <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#1a5bb5] group-hover:bg-[#1a5bb5] group-hover:text-white flex items-center justify-center flex-shrink-0 transition-all duration-200 shadow-xs">
+                                          <Icon size={16} strokeWidth={2} />
+                                        </div>
+                                        <div className="min-w-0">
+                                          <span className="text-sm font-semibold text-gray-900 group-hover:text-[#1a5bb5] transition-colors block truncate">
+                                            {dept.name}
+                                          </span>
+                                          <span className="text-[11px] text-gray-500 block truncate font-light">
+                                            {dept.description}
+                                          </span>
+                                        </div>
+                                      </div>
+                                      <ChevronRight 
+                                        size={14} 
+                                        className="text-gray-300 group-hover:text-[#1a5bb5] group-hover:translate-x-0.5 transition-all flex-shrink-0 ml-1.5" 
+                                      />
+                                    </a>
+                                  );
+                                })}
+                              </div>
+                            </div>
                           </div>
 
-                          <div className="space-y-1">
-                            {SOLUTION_INDUSTRIES.map((industry) => {
-                              const Icon = industry.icon;
-                              return (
-                                <a
-                                  key={industry.id}
-                                  href={industry.href}
-                                  onClick={(e) => handleLinkClick(e, industry.href)}
-                                  className="group flex items-center justify-between p-2.5 rounded-xl transition-all duration-150 hover:bg-blue-50/80 cursor-pointer"
-                                >
-                                  <div className="flex items-center gap-3 min-w-0">
-                                    <div className="w-9 h-9 rounded-lg bg-blue-50 text-[#1a5bb5] group-hover:bg-[#1a5bb5] group-hover:text-white flex items-center justify-center flex-shrink-0 transition-all duration-200 shadow-sm">
-                                      <Icon size={18} strokeWidth={2} />
-                                    </div>
-                                    <div className="min-w-0">
-                                      <span className="text-sm font-semibold text-gray-900 group-hover:text-[#1a5bb5] transition-colors block truncate">
-                                        {industry.name}
-                                      </span>
-                                      <span className="text-[11px] text-gray-500 block truncate font-light">
-                                        {industry.description}
-                                      </span>
-                                    </div>
-                                  </div>
-                                  <ChevronRight 
-                                    size={15} 
-                                    className="text-gray-300 group-hover:text-[#1a5bb5] group-hover:translate-x-0.5 transition-all flex-shrink-0 ml-2" 
-                                  />
-                                </a>
-                              );
-                            })}
-                          </div>
-
-                          <div className="mt-2.5 pt-2 border-t border-gray-100">
+                          <div className="mt-3 pt-2.5 border-t border-gray-100">
                             <a
                               href="#reseni"
                               onClick={(e) => {
@@ -277,7 +321,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             {isMobileSolutionsOpen && (
               <div className="pl-3 pr-2 py-2 space-y-1 mt-1 border-l-2 border-[#1a5bb5]/50 ml-3">
                 <div className="px-2 pb-1 text-[11px] font-bold uppercase tracking-wider text-gray-400">
-                  Odvětví:
+                  Podle oboru:
                 </div>
                 {SOLUTION_INDUSTRIES.map((industry) => {
                   const Icon = industry.icon;
@@ -289,7 +333,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                         setIsMobileSolutionsOpen(false);
                         handleLinkClick(e, industry.href);
                       }}
-                      className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
+                      className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
                         isScrolled
                           ? 'text-gray-800 hover:text-[#1a5bb5] hover:bg-blue-50'
                           : 'text-gray-200 hover:text-white hover:bg-white/10'
@@ -303,18 +347,47 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                   );
                 })}
 
-                <a
-                  href="#reseni"
-                  onClick={(e) => {
-                    setIsMobileSolutionsOpen(false);
-                    handleLinkClick(e, '#reseni');
-                  }}
-                  className={`block px-3 py-2 text-xs font-semibold ${
-                    isScrolled ? 'text-[#1a5bb5]' : 'text-blue-300'
-                  }`}
-                >
-                  Přehled platformy SIESE &rarr;
-                </a>
+                <div className="px-2 pt-2.5 pb-1 text-[11px] font-bold uppercase tracking-wider text-gray-400 border-t border-gray-200/40 mt-2">
+                  Podle oddělení:
+                </div>
+                {SOLUTION_DEPARTMENTS.map((dept) => {
+                  const Icon = dept.icon;
+                  return (
+                    <a
+                      key={dept.id}
+                      href={dept.href}
+                      onClick={(e) => {
+                        setIsMobileSolutionsOpen(false);
+                        handleLinkClick(e, dept.href);
+                      }}
+                      className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
+                        isScrolled
+                          ? 'text-gray-800 hover:text-[#1a5bb5] hover:bg-blue-50'
+                          : 'text-gray-200 hover:text-white hover:bg-white/10'
+                      }`}
+                    >
+                      <div className="w-7 h-7 rounded-md bg-blue-100 text-[#1a5bb5] flex items-center justify-center flex-shrink-0">
+                        <Icon size={14} />
+                      </div>
+                      <span className="font-medium">{dept.name}</span>
+                    </a>
+                  );
+                })}
+
+                <div className="pt-2 mt-1 border-t border-gray-200/40">
+                  <a
+                    href="#reseni"
+                    onClick={(e) => {
+                      setIsMobileSolutionsOpen(false);
+                      handleLinkClick(e, '#reseni');
+                    }}
+                    className={`block px-3 py-1.5 text-xs font-semibold ${
+                      isScrolled ? 'text-[#1a5bb5]' : 'text-blue-300'
+                    }`}
+                  >
+                    Přehled platformy SIESE &rarr;
+                  </a>
+                </div>
               </div>
             )}
           </div>

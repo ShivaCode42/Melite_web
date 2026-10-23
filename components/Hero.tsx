@@ -20,7 +20,7 @@ export const Hero: React.FC = () => {
       <div className="relative max-w-4xl mx-auto z-10">
         <ScrollReveal direction="up" delay={0}>
           <h1 className="text-3xl md:text-5xl font-medium text-white mb-6 leading-relaxed">
-            Komplexní cloudová platforma pro správu dokumentů
+            Bezpečný digitální archiv pro dlouhodobé uchovávání
           </h1>
         </ScrollReveal>
         
