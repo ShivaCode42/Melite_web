@@ -187,16 +187,13 @@ export const PublicSectorPage: React.FC<PublicSectorPageProps> = ({
         </div>
       </section>
 
-      {/* SECTION 2: S čím SIESE pomáhá */}
+      {/* SECTION 2: Co SIESE řeší */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#1a5bb5] block mb-2">
-                Funkční možnosti
-              </span>
               <h2 className="text-2xl md:text-4xl font-bold text-gray-900 tracking-tight">
-                S čím SIESE pomáhá
+                Co SIESE řeší
               </h2>
             </div>
           </ScrollReveal>
@@ -271,9 +268,6 @@ export const PublicSectorPage: React.FC<PublicSectorPageProps> = ({
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal>
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-xs font-bold uppercase tracking-widest text-blue-300 block mb-2">
-                Přidaná hodnota
-              </span>
               <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
                 Proč SIESE?
               </h2>
