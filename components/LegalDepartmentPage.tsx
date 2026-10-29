@@ -556,10 +556,10 @@ export const LegalDepartmentPage: React.FC<LegalDepartmentPageProps> = ({
             <div className="max-w-3xl mx-auto text-center mb-14">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100/80 text-[#1a5bb5] text-xs font-semibold uppercase tracking-wider mb-3">
                 <Sparkles size={14} />
-                <span>Budoucnost správy smluv</span>
+                <span>Budoucí rozšíření</span>
               </div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-4">
-                Co připravujeme: smluvní historie v kontextu
+                Smlouvy a dokumenty v plném kontextu
               </h2>
               <p className="text-gray-600 text-sm md:text-base font-light">
                 Inteligentní sémantická vrstva nad archivovanými smlouvami.
