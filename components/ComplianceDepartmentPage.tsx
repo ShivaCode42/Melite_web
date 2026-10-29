@@ -588,11 +588,8 @@ export const ComplianceDepartmentPage: React.FC<ComplianceDepartmentPageProps> =
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="text-center max-w-3xl mx-auto mb-14">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#1a5bb5] block mb-2">
-                Měřitelné výsledky
-              </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
-                Co to přináší compliance oddělení
+                Konkrétní přínosy pro vaše oddělení
               </h2>
             </div>
           </ScrollReveal>

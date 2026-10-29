@@ -468,11 +468,8 @@ export const LegalDepartmentPage: React.FC<LegalDepartmentPageProps> = ({
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="text-center max-w-3xl mx-auto mb-14">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#1a5bb5] block mb-2">
-                Hmatatelné přínosy
-              </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-4">
-                Co to přináší právnímu oddělení
+                Konkrétní přínosy pro vaše oddělení
               </h2>
               <p className="text-gray-600 text-sm md:text-base font-light">
                 Přímý vliv na právní jistotu, čas týmu a snížení nákladů na externí posudky.

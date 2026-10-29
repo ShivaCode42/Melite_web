@@ -130,11 +130,8 @@ export const RecordManagementPage: React.FC<RecordManagementPageProps> = ({
 
           <ScrollReveal direction="up" delay={150}>
             {/* Perex */}
-            <p className="text-base sm:text-lg md:text-xl text-blue-100 font-light max-w-3xl mx-auto mb-6 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-blue-100 font-light max-w-3xl mx-auto mb-10 leading-relaxed">
               Skartační pravidla jsou jedna věc. Jejich uplatnění v praxi druhá. SIESE řídí retenční lhůty u uložených záznamů, eviduje jejich životní cyklus a ke skartaci provedené v SIESE uchovává protokol.
-            </p>
-            <p className="text-sm sm:text-base text-blue-200 font-light max-w-3xl mx-auto mb-10 leading-relaxed">
-              Přehled platí pro záznamy v SIESE: retenční lhůta, evidovaný stav a provedené operace. Při kontrole nezačínáte hledáním, co se s dokumentem stalo.
             </p>
           </ScrollReveal>
 
@@ -226,9 +223,6 @@ export const RecordManagementPage: React.FC<RecordManagementPageProps> = ({
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="text-center max-w-3xl mx-auto mb-14">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#1a5bb5] block mb-2">
-                Běžná úskalí a překážky
-              </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-4">
                 Kde správa záznamů zbytečně komplikuje práci
               </h2>
@@ -332,9 +326,6 @@ export const RecordManagementPage: React.FC<RecordManagementPageProps> = ({
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#1a5bb5] block mb-2">
-                Řešení a systém
-              </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-4">
                 Jak SIESE pomáhá
               </h2>
@@ -522,10 +513,10 @@ export const RecordManagementPage: React.FC<RecordManagementPageProps> = ({
                 <span>Budoucí rozšíření</span>
               </div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-4">
-                Připravujeme: Understand — která verze je záznam
+                Komunikujte s archivem přirozenou řečí
               </h2>
               <p className="text-gray-600 text-sm md:text-base font-light">
-                Inteligentní orientace v rozsáhlých archivech a eliminace duplicitních kopií.
+                Inteligentní vyhledávání informací napříč tisíci dokumenty rychle a snadno.
               </p>
             </div>
           </ScrollReveal>
@@ -533,40 +524,16 @@ export const RecordManagementPage: React.FC<RecordManagementPageProps> = ({
           <div className="bg-white rounded-3xl p-8 md:p-12 border border-blue-100 shadow-xl max-w-4xl mx-auto relative overflow-hidden">
             <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
 
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#1a5bb5] flex items-center justify-center font-bold shadow-xs">
-                <BrainCircuit size={26} />
-              </div>
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#1a5bb5]">Připravovaný modul</span>
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900">
-                  Automatické rozpoznání a kategorizace záznamů
-                </h3>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
-              <div className="p-6 rounded-2xl bg-[#f0f7ff] border border-blue-100/80">
-                <div className="w-10 h-10 rounded-xl bg-blue-100 text-[#1a5bb5] flex items-center justify-center font-bold text-sm mb-4">
-                  <Copy size={20} />
-                </div>
-                <h4 className="text-lg font-bold text-gray-900 mb-2">
-                  Propojení verzí a kopií
-                </h4>
-                <p className="text-sm text-gray-600 font-light leading-relaxed">
-                  Systém rozpozná související verze dokumentu napříč úložišti a pomůže určit, který soubor je finální záznam určený k archivaci.
-                </p>
-              </div>
-
+            <div className="grid grid-cols-1 gap-6 relative z-10">
               <div className="p-6 rounded-2xl bg-[#f0f7ff] border border-blue-100/80">
                 <div className="w-10 h-10 rounded-xl bg-blue-100 text-[#1a5bb5] flex items-center justify-center font-bold text-sm mb-4">
                   <Sparkles size={20} />
                 </div>
                 <h4 className="text-lg font-bold text-gray-900 mb-2">
-                  Lokální AI pro práci s archivem
+                  AI agent pro váš archiv
                 </h4>
                 <p className="text-sm text-gray-600 font-light leading-relaxed">
-                  Asistované doplňování metadat a kategorizace záznamů bez odesílání dat do veřejných cloudových modelů.
+                  Získejte potřebné odpovědi rychle a bez zdlouhavého hledání. Umělá inteligence pracuje přímo s vašimi daty – lokálně, zcela pod vaší plnou kontrolou a bez vysokých měsíčních nákladů.
                 </p>
               </div>
             </div>
@@ -579,11 +546,8 @@ export const RecordManagementPage: React.FC<RecordManagementPageProps> = ({
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="text-center max-w-3xl mx-auto mb-14">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#1a5bb5] block mb-2">
-                Konkrétní přínosy
-              </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
-                Co to přináší správci záznamů
+                Konkrétní přínosy pro vaše oddělení
               </h2>
             </div>
           </ScrollReveal>
