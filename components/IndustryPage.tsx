@@ -15,7 +15,7 @@ export const IndustryPage: React.FC<IndustryPageProps> = ({
   onSelectIndustry,
 }) => {
   return (
-    <div className="pt-24 pb-20 bg-white min-h-screen">
+    <div className="pt-20 pb-20 bg-white min-h-screen">
       {/* Top Breadcrumb & Switcher bar */}
       <div className="bg-[#f0f7ff] border-b border-blue-100 py-4 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -75,7 +75,7 @@ export const IndustryPage: React.FC<IndustryPageProps> = ({
             {industry.heroDescription}
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex items-center justify-center">
             <a
               href="#kontakt-odvetvi"
               onClick={(e) => {
@@ -83,16 +83,11 @@ export const IndustryPage: React.FC<IndustryPageProps> = ({
                 const el = document.getElementById('kontakt-odvetvi');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="bg-white text-[#1a5bb5] hover:bg-blue-50 font-bold px-8 py-3.5 rounded-md text-sm md:text-base shadow-lg transition-all transform active:scale-95"
+              className="w-full sm:w-auto bg-white text-[#1a5bb5] hover:bg-blue-50 font-bold px-8 py-4 rounded-md text-base shadow-xl hover:shadow-2xl transition-all transform active:scale-95 flex items-center justify-center gap-2"
             >
-              Nezávazně konzultovat pro {industry.name}
+              <span>Domluvit konzultaci</span>
+              <ArrowRight size={18} />
             </a>
-            <button
-              onClick={onNavigateHome}
-              className="bg-white/10 hover:bg-white/20 text-white border border-white/30 font-medium px-6 py-3.5 rounded-md text-sm md:text-base transition-colors"
-            >
-              Prozkoumat celou platformu
-            </button>
           </div>
         </div>
       </div>

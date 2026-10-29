@@ -102,14 +102,6 @@ export const LegalDepartmentPage: React.FC<LegalDepartmentPageProps> = ({
             <span>/</span>
             <span className="text-gray-900 font-semibold">Právní oddělení</span>
           </div>
-
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-[#1a5bb5] hover:text-blue-700 bg-white px-3 py-1.5 rounded-md border border-blue-200 shadow-xs"
-          >
-            <span>Domluvit konzultaci</span>
-            <ArrowRight size={13} />
-          </button>
         </div>
       </div>
 

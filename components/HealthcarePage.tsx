@@ -81,14 +81,6 @@ export const HealthcarePage: React.FC<HealthcarePageProps> = ({
             <span>/</span>
             <span className="text-gray-900 font-semibold">Zdravotnictví</span>
           </div>
-
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-[#1a5bb5] hover:text-blue-700 bg-white px-3 py-1.5 rounded-md border border-blue-200 shadow-xs"
-          >
-            <span>Domluvit konzultaci</span>
-            <ArrowRight size={13} />
-          </button>
         </div>
       </div>
 
@@ -831,7 +823,7 @@ export const HealthcarePage: React.FC<HealthcarePageProps> = ({
                 onClick={() => setIsModalOpen(true)}
                 className="w-full sm:w-auto bg-white text-[#1a5bb5] hover:bg-blue-50 font-bold px-10 py-4 rounded-md text-base shadow-xl hover:shadow-2xl transition-all transform active:scale-95"
               >
-                Domluvit 30min konzultaci
+                Domluvit konzultaci
               </button>
               <button
                 onClick={onNavigateHome}

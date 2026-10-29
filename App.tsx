@@ -245,9 +245,22 @@ const App: React.FC = () => {
     !isRecordManagementRoute
   ) ? INDUSTRY_DETAILS[industryId] : null;
 
+  const isSubpage = Boolean(
+    isTelekomunikaceRoute ||
+    isFinanceRoute ||
+    isStatniSpravaRoute ||
+    isZdravotnictviRoute ||
+    isPharmaRoute ||
+    isEnergetikaRoute ||
+    isLegalRoute ||
+    isComplianceRoute ||
+    isRecordManagementRoute ||
+    currentIndustry
+  );
+
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans">
-      <Navbar onNavigate={handleNavigate} />
+      <Navbar onNavigate={handleNavigate} isSubpage={isSubpage} />
       
       {isTelekomunikaceRoute ? (
         <TelecommunicationsPage 

@@ -4,13 +4,16 @@ import { NAV_LINKS, SOLUTION_INDUSTRIES, SOLUTION_DEPARTMENTS } from '../constan
 
 interface NavbarProps {
   onNavigate?: (href: string) => void;
+  isSubpage?: boolean;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onNavigate, isSubpage = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
   const [isMobileSolutionsOpen, setIsMobileSolutionsOpen] = useState(false);
+
+  const isSolid = isScrolled || isSubpage;
 
   const solutionsRef = useRef<HTMLDivElement>(null);
 
@@ -19,6 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
       setIsScrolled(window.scrollY > 50);
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -77,17 +81,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         isScrolled 
           ? 'bg-white/95 backdrop-blur-md shadow-md py-1 border-b border-gray-100' 
+          : isSubpage
+          ? 'bg-white/95 backdrop-blur-md shadow-xs py-2 border-b border-gray-100'
           : 'bg-white/10 backdrop-blur-sm py-2 border-b border-white/10'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-[60px]' : 'h-[72px]'}`}>
+        <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-[60px]' : isSubpage ? 'h-[64px]' : 'h-[72px]'}`}>
           <div className="flex items-center">
             {/* Logo */}
             <div className="flex-shrink-0">
               <span 
                 className={`font-bold text-xl tracking-wider cursor-pointer transition-colors duration-300 flex items-center gap-1 ${
-                  isScrolled ? 'text-[#1a5bb5]' : 'text-white'
+                  isSolid ? 'text-[#1a5bb5]' : 'text-white'
                 }`} 
                 onClick={(e) => {
                   if (onNavigate) {
@@ -112,7 +118,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                           type="button"
                           onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
                           className={`inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium transition-all duration-200 rounded-md cursor-pointer ${
-                            isScrolled 
+                            isSolid 
                               ? isSolutionsOpen
                                 ? 'text-[#1a5bb5] bg-blue-50'
                                 : 'text-gray-700 hover:text-[#1a5bb5] hover:bg-gray-50' 
@@ -233,7 +239,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                       href={link.href}
                       onClick={(e) => handleLinkClick(e, link.href)}
                       className={`px-3 py-2 text-sm font-medium transition-all duration-300 rounded-md ${
-                        isScrolled 
+                        isSolid 
                           ? 'text-gray-600 hover:text-[#1a5bb5] hover:bg-gray-50' 
                           : 'text-gray-100 hover:text-white hover:bg-white/10'
                       }`}
@@ -252,7 +258,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
               href="#kontakt"
               onClick={(e) => handleLinkClick(e, '#kontakt')}
               className={`px-5 py-2.5 rounded-sm text-sm font-medium transition-all duration-300 shadow-sm ${
-                isScrolled
+                isSolid
                   ? 'bg-[#1a5bb5] hover:bg-blue-700 text-white'
                   : 'bg-[#1a5bb5] hover:bg-blue-600 text-white'
               }`}
@@ -266,7 +272,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition-colors ${
-                isScrolled ? 'text-gray-600 hover:text-[#1a5bb5]' : 'text-gray-100 hover:text-white'
+                isSolid ? 'text-gray-600 hover:text-[#1a5bb5]' : 'text-gray-100 hover:text-white'
               }`}
               aria-expanded={isOpen}
             >
@@ -283,7 +289,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
           isOpen 
             ? 'opacity-100 scale-y-100 pointer-events-auto' 
             : 'opacity-0 scale-y-0 pointer-events-none'
-        } ${isScrolled ? 'bg-white shadow-xl' : 'bg-[#0d1e35]'}`}
+        } ${isSolid ? 'bg-white shadow-xl' : 'bg-[#0d1e35]'}`}
       >
         <div className="px-3 pt-3 pb-4 space-y-1 sm:px-4 border-t border-gray-100/20 max-h-[85vh] overflow-y-auto">
           
@@ -292,7 +298,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             <button
               onClick={() => setIsMobileSolutionsOpen(!isMobileSolutionsOpen)}
               className={`w-full flex items-center justify-between px-3 py-2.5 rounded-md text-base font-medium transition-colors ${
-                isScrolled ? 'text-gray-700 hover:bg-gray-50' : 'text-gray-200 hover:text-white hover:bg-white/10'
+                isSolid ? 'text-gray-700 hover:bg-gray-50' : 'text-gray-200 hover:text-white hover:bg-white/10'
               }`}
             >
               <span className="font-semibold">Řešení</span>
@@ -320,7 +326,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                         handleLinkClick(e, industry.href);
                       }}
                       className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
-                        isScrolled
+                        isSolid
                           ? 'text-gray-800 hover:text-[#1a5bb5] hover:bg-blue-50'
                           : 'text-gray-200 hover:text-white hover:bg-white/10'
                       }`}
@@ -347,7 +353,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                         handleLinkClick(e, dept.href);
                       }}
                       className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
-                        isScrolled
+                        isSolid
                           ? 'text-gray-800 hover:text-[#1a5bb5] hover:bg-blue-50'
                           : 'text-gray-200 hover:text-white hover:bg-white/10'
                       }`}
@@ -368,7 +374,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                       handleLinkClick(e, '#reseni');
                     }}
                     className={`block px-3 py-1.5 text-xs font-semibold ${
-                      isScrolled ? 'text-[#1a5bb5]' : 'text-blue-300'
+                      isSolid ? 'text-[#1a5bb5]' : 'text-blue-300'
                     }`}
                   >
                     Přehled platformy SIESE &rarr;
@@ -385,7 +391,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
               href={link.href}
               onClick={(e) => handleLinkClick(e, link.href)}
               className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                isScrolled ? 'text-gray-600 hover:bg-gray-50' : 'text-gray-200 hover:text-white hover:bg-white/10'
+                isSolid ? 'text-gray-600 hover:bg-gray-50' : 'text-gray-200 hover:text-white hover:bg-white/10'
               }`}
             >
               {link.name}
