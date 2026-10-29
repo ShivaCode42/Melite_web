@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   Radio, Landmark, Building2, Activity, FlaskConical, Zap, 
   Scale, ShieldCheck, Archive,
@@ -93,8 +93,6 @@ interface IndustrySolutionsWidgetProps {
 }
 
 export const IndustrySolutionsWidget: React.FC<IndustrySolutionsWidgetProps> = ({ onNavigate }) => {
-  const [activeTab, setActiveTab] = useState<'all' | 'obor' | 'oddeleni'>('all');
-
   const handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     if (onNavigate) {
@@ -143,7 +141,7 @@ export const IndustrySolutionsWidget: React.FC<IndustrySolutionsWidgetProps> = (
         
         {/* Section Header */}
         <ScrollReveal>
-          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
+          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-[#1a5bb5] text-xs font-semibold uppercase tracking-wider mb-4">
               <ShieldCheck size={14} className="text-[#1a5bb5]" />
               <span>Oborová specializace</span>
@@ -151,91 +149,49 @@ export const IndustrySolutionsWidget: React.FC<IndustrySolutionsWidgetProps> = (
             <h2 className="text-2xl md:text-4xl font-semibold text-gray-900 tracking-tight mb-4">
               Řešení pro váš obor
             </h2>
-            <p className="text-gray-600 text-sm md:text-base leading-relaxed font-normal mb-8">
+            <p className="text-gray-600 text-sm md:text-base leading-relaxed font-normal">
               Prohlédněte si, jak SIESE řeší specifické procesní a regulatorní nároky ve vaší oblasti a jednotlivých odděleních.
             </p>
-
-            {/* Filter Tabs */}
-            <div className="inline-flex items-center p-1 bg-white border border-blue-100 rounded-xl shadow-xs gap-1">
-              <button
-                type="button"
-                onClick={() => setActiveTab('all')}
-                className={`px-4 py-2 text-xs md:text-sm font-semibold rounded-lg transition-all ${
-                  activeTab === 'all'
-                    ? 'bg-[#1a5bb5] text-white shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                }`}
-              >
-                Všechna řešení ({ALL_SOLUTION_CARDS.length})
-              </button>
-              <button
-                type="button"
-                onClick={() => setActiveTab('obor')}
-                className={`px-4 py-2 text-xs md:text-sm font-semibold rounded-lg transition-all ${
-                  activeTab === 'obor'
-                    ? 'bg-[#1a5bb5] text-white shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                }`}
-              >
-                Podle oboru ({INDUSTRY_CARDS.length})
-              </button>
-              <button
-                type="button"
-                onClick={() => setActiveTab('oddeleni')}
-                className={`px-4 py-2 text-xs md:text-sm font-semibold rounded-lg transition-all ${
-                  activeTab === 'oddeleni'
-                    ? 'bg-[#1a5bb5] text-white shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                }`}
-              >
-                Podle oddělení ({DEPARTMENT_CARDS.length})
-              </button>
-            </div>
           </div>
         </ScrollReveal>
 
-        {/* Content display based on tab */}
-        {activeTab === 'all' ? (
-          <div className="space-y-12">
-            {/* Podle oboru Group */}
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#1a5bb5] bg-blue-50/80 border border-blue-100 px-3 py-1 rounded-md">
-                  Podle oboru
-                </span>
-                <div className="h-px bg-blue-100 flex-1"></div>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-                {INDUSTRY_CARDS.map((card, index) => renderCard(card, index))}
-              </div>
-            </div>
-
-            {/* Podle oddělení Group */}
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#1a5bb5] bg-blue-50/80 border border-blue-100 px-3 py-1 rounded-md">
-                  Podle oddělení
-                </span>
-                <div className="h-px bg-blue-100 flex-1"></div>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-                {DEPARTMENT_CARDS.map((card, index) => renderCard(card, index))}
-              </div>
-            </div>
-          </div>
-        ) : activeTab === 'obor' ? (
+        <div className="space-y-16 md:space-y-20">
+          {/* Podle oboru Group */}
           <div>
+            <ScrollReveal>
+              <div className="flex items-center gap-4 mb-8">
+                <div className="inline-flex items-center gap-2.5 bg-[#1a5bb5] text-white px-4 py-2 rounded-lg shadow-sm">
+                  <Building2 size={18} />
+                  <span className="text-sm md:text-base font-bold uppercase tracking-wider">
+                    Podle oboru
+                  </span>
+                </div>
+                <div className="h-0.5 bg-gradient-to-r from-blue-200 via-blue-100 to-transparent flex-1"></div>
+              </div>
+            </ScrollReveal>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
               {INDUSTRY_CARDS.map((card, index) => renderCard(card, index))}
             </div>
           </div>
-        ) : (
-          <div>
+
+          {/* Podle oddělení Group */}
+          <div className="pt-8 md:pt-10 border-t-2 border-blue-100/90">
+            <ScrollReveal>
+              <div className="flex items-center gap-4 mb-8">
+                <div className="inline-flex items-center gap-2.5 bg-[#1a5bb5] text-white px-4 py-2 rounded-lg shadow-sm">
+                  <Scale size={18} />
+                  <span className="text-sm md:text-base font-bold uppercase tracking-wider">
+                    Podle oddělení
+                  </span>
+                </div>
+                <div className="h-0.5 bg-gradient-to-r from-blue-200 via-blue-100 to-transparent flex-1"></div>
+              </div>
+            </ScrollReveal>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
               {DEPARTMENT_CARDS.map((card, index) => renderCard(card, index))}
             </div>
           </div>
-        )}
+        </div>
 
       </div>
     </section>
